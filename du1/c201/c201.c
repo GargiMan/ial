@@ -56,6 +56,8 @@ void Error() {
 **/
     printf ("*ERROR* The program has performed an illegal operation.\n");
     errflg = TRUE;                      /* globální proměnná -- příznak chyby */
+
+    return;
 }
 
 void InitList (tList *L) {
@@ -67,8 +69,10 @@ void InitList (tList *L) {
 ** že neinicializované proměnné mají nedefinovanou hodnotu.
 **/
 	
+    L->Act=NULL;
+    L->First=NULL;
 
- solved = FALSE;                   /* V případě řešení, smažte tento řádek! */
+    return;
 }
 
 void DisposeList (tList *L) {
@@ -77,9 +81,16 @@ void DisposeList (tList *L) {
 ** po inicializaci. Veškerá paměť používaná prvky seznamu L bude korektně
 ** uvolněna voláním operace free.
 ***/
-	
 
- solved = FALSE;                   /* V případě řešení, smažte tento řádek! */
+    while (L->First != NULL) {
+        tElemPtr temp = L->First->ptr;
+        free(L->First);
+        L->First = temp;
+    }
+
+    L->Act = NULL;
+
+    return;
 }
 
 void InsertFirst (tList *L, int val) {
@@ -89,8 +100,22 @@ void InsertFirst (tList *L, int val) {
 ** volá funkci Error().
 **/
     
+    
+    tElemPtr element = malloc(sizeof(tElemPtr));
+    if (element == NULL) {
+        Error();
+        return;
+    }
 
- solved = FALSE;                   /* V případě řešení, smažte tento řádek! */
+    element->data=val;
+    if (L->First != NULL) {
+        element->ptr=L->First;
+    } else {
+        element->ptr=NULL;
+    }
+    L->First=element;
+
+    return;
 }
 
 void First (tList *L) {
@@ -100,8 +125,9 @@ void First (tList *L) {
 ** zda je seznam L prázdný.
 **/
 	
+    L->Act=L->First;
 
- solved = FALSE;                   /* V případě řešení, smažte tento řádek! */
+    return;
 }
 
 void CopyFirst (tList *L, int *val) {
@@ -110,8 +136,13 @@ void CopyFirst (tList *L, int *val) {
 ** Pokud je seznam L prázdný, volá funkci Error().
 **/
 	
+    if (L->First == NULL) {
+        Error();
+        return;
+    }
+    val = &L->First->data;
 
- solved = FALSE;                   /* V případě řešení, smažte tento řádek! */
+    return;
 }
 
 void DeleteFirst (tList *L) {
@@ -121,8 +152,12 @@ void DeleteFirst (tList *L) {
 ** Pokud byl seznam L prázdný, nic se neděje.
 **/
 	
+    if (L->First == NULL) return;
+    if (L->First == L->Act) L->Act = NULL;
 
- solved = FALSE;                   /* V případě řešení, smažte tento řádek! */
+    tElemPtr temp = L->First->ptr;
+    free(L->First);
+    L->First = temp;
 }	
 
 void PostDelete (tList *L) {
@@ -185,8 +220,7 @@ int Active (tList *L) {
 ** Tuto funkci je vhodné implementovat jedním příkazem return. 
 **/
 	
-	
- solved = FALSE;                   /* V případě řešení, smažte tento řádek! */
+    return (L->Act == NULL ? 0 : 1);
 }
 
 /* Konec c201.c */

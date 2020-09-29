@@ -22,6 +22,7 @@ void print_elements_of_list(tList TL)	{
 	tList TempList=TL;	
 	int CurrListLength = 0;
 	printf("-----------------");
+	if (TempList.First == NULL && TempList.Act == NULL) printf("\n! EMPTY !");
 	while ((TempList.First!=NULL) && (CurrListLength<MaxListLength))	{
 		printf("\n\t %d",TempList.First->data);
 		if ((TempList.First==TL.Act) && (TL.Act!=NULL))
