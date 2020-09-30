@@ -69,8 +69,8 @@ void InitList (tList *L) {
 ** že neinicializované proměnné mají nedefinovanou hodnotu.
 **/
 	
-    L->Act=NULL;
-    L->First=NULL;
+    L->Act = NULL;
+    L->First = NULL;
 
     return;
 }
@@ -107,13 +107,13 @@ void InsertFirst (tList *L, int val) {
         return;
     }
 
-    element->data=val;
+    element->data = val;
     if (L->First != NULL) {
-        element->ptr=L->First;
+        element->ptr = L->First;
     } else {
-        element->ptr=NULL;
+        element->ptr = NULL;
     }
-    L->First=element;
+    L->First = element;
 
     return;
 }
@@ -125,7 +125,7 @@ void First (tList *L) {
 ** zda je seznam L prázdný.
 **/
 	
-    L->Act=L->First;
+    L->Act = L->First;
 
     return;
 }
@@ -140,7 +140,8 @@ void CopyFirst (tList *L, int *val) {
         Error();
         return;
     }
-    val = &L->First->data;
+
+    *val = L->First->data;
 
     return;
 }
@@ -170,6 +171,7 @@ void PostDelete (tList *L) {
 **/
 	
     if (L->Act == NULL || L->Act->ptr == NULL) return;
+
     for (tElemPtr temp = L->First; temp != NULL && temp->ptr != NULL; temp = temp->ptr) {
         if (temp == L->Act) {
             temp = L->Act->ptr;
@@ -191,7 +193,19 @@ void PostInsert (tList *L, int val) {
 ** zavolá funkci Error().
 **/
 	
+    if (L->Act == NULL) return;
+
+    tElemPtr element = malloc(sizeof(tElemPtr));
+    if (element == NULL) {
+        Error();
+        return;
+    }
+
+    element->data = val;
+    element->ptr = L->Act->ptr;
+    L->Act->ptr = element;
 	
+    return;
 }
 
 void Copy (tList *L, int *val) {
@@ -204,7 +218,8 @@ void Copy (tList *L, int *val) {
         Error();
         return;
     }
-    val = &L->Act->data;
+
+    *val = L->Act->data;
 
     return;
 }

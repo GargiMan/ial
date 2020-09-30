@@ -22,7 +22,6 @@ void print_elements_of_list(tList TL)	{
 	tList TempList=TL;	
 	int CurrListLength = 0;
 	printf("-----------------");
-	if (TempList.First == NULL && TempList.Act == NULL) printf("\n! EMPTY !");
 	while ((TempList.First!=NULL) && (CurrListLength<MaxListLength))	{
 		printf("\n\t %d",TempList.First->data);
 		if ((TempList.First==TL.Act) && (TL.Act!=NULL))
@@ -30,8 +29,7 @@ void print_elements_of_list(tList TL)	{
 		TempList.First=TempList.First->ptr;	
 		CurrListLength++;
 	}
-    if (CurrListLength>=MaxListLength)
-        printf("\nList exceeded maximum length!");
+    if (CurrListLength>=MaxListLength) printf("\nList exceeded maximum length!");
 	printf("\n-----------------\n");
 }
 
@@ -287,7 +285,7 @@ int main(int argc, char *argv[])	{
     printf("\n[TEST06]\n");
     printf("Test funkce Copy při aktivitě na prvním prvku\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    test_Copy();
+    test_CopyFirst();
  
     printf("\n[TEST07]\n");
     printf("Test funkce Succ -- voláme 3x, aktivita bude na posledním prvku.\n");
