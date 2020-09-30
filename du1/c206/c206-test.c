@@ -29,8 +29,7 @@ void print_elements_of_list(tDLList TL)	{
 		TempList.First=TempList.First->rptr;
 		CurrListLength++;
 	}
-    if (CurrListLength>=MaxListLength)
-        printf("\nList exceeded maximum length!");
+    if (CurrListLength>=MaxListLength) printf("\nList exceeded maximum length!");
 	printf("\n-----------------\n");     
 }
 

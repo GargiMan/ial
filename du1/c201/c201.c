@@ -54,6 +54,7 @@ void Error() {
 ** Vytiskne upozornění na to, že došlo k chybě.
 ** Tato funkce bude volána z některých dále implementovaných operací.
 **/
+
     printf ("*ERROR* The program has performed an illegal operation.\n");
     errflg = TRUE;                      /* globální proměnná -- příznak chyby */
 
@@ -69,8 +70,8 @@ void InitList (tList *L) {
 ** že neinicializované proměnné mají nedefinovanou hodnotu.
 **/
 	
-    L->Act = NULL;
     L->First = NULL;
+    L->Act = NULL;
 
     return;
 }
@@ -100,7 +101,6 @@ void InsertFirst (tList *L, int val) {
 ** volá funkci Error().
 **/
     
-    
     tElemPtr element = malloc(sizeof(tElemPtr));
     if (element == NULL) {
         Error();
@@ -108,11 +108,7 @@ void InsertFirst (tList *L, int val) {
     }
 
     element->data = val;
-    if (L->First != NULL) {
-        element->ptr = L->First;
-    } else {
-        element->ptr = NULL;
-    }
+    element->ptr = L->First;
     L->First = element;
 
     return;
@@ -172,15 +168,9 @@ void PostDelete (tList *L) {
 	
     if (L->Act == NULL || L->Act->ptr == NULL) return;
 
-    for (tElemPtr temp = L->First; temp != NULL && temp->ptr != NULL; temp = temp->ptr) {
-        if (temp == L->Act) {
-            temp = L->Act->ptr;
-            L->Act->ptr = L->Act->ptr->ptr;
-            free(temp);
-            
-            return;
-        }
-    }
+    tElemPtr temp = L->Act->ptr;
+    L->Act->ptr = L->Act->ptr->ptr;
+    free(temp);
 
     return;
 }
