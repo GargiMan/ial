@@ -107,7 +107,7 @@ void InsertFirst (tList *L, int val) {
     
     if (L == NULL) return;
 
-    tElemPtr element = malloc(sizeof(tElemPtr));
+    tElemPtr element = malloc(sizeof(struct tElem));
     if (element == NULL) {
         Error();
         return;
@@ -197,7 +197,7 @@ void PostInsert (tList *L, int val) {
     if (L == NULL) return;
     if (L->Act == NULL) return;
 
-    tElemPtr element = malloc(sizeof(tElemPtr));
+    tElemPtr element = malloc(sizeof(struct tElem));
     if (element == NULL) {
         Error();
         return;

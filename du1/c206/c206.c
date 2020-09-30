@@ -117,7 +117,7 @@ void DLInsertFirst (tDLList *L, int val) {
 	
     if (L == NULL) return;
 
-    tDLElemPtr element = malloc(sizeof(tDLElemPtr));
+    tDLElemPtr element = malloc(sizeof(struct tDLElem));
     if (element == NULL) {
         DLError();
         return;
@@ -145,7 +145,7 @@ void DLInsertLast(tDLList *L, int val) {
 
     if (L == NULL) return;
 
-	tDLElemPtr element = malloc(sizeof(tDLElemPtr));
+	tDLElemPtr element = malloc(sizeof(struct tDLElem));
     if (element == NULL) {
         DLError();
         return;
@@ -318,7 +318,7 @@ void DLPostInsert (tDLList *L, int val) {
     if (L == NULL) return;
 	if (L->Act == NULL) return;
 
-    tDLElemPtr element = malloc(sizeof(tDLElemPtr));
+    tDLElemPtr element = malloc(sizeof(struct tDLElem));
     if (element == NULL) {
         DLError();
         return;
@@ -349,7 +349,7 @@ void DLPreInsert (tDLList *L, int val) {
     if (L == NULL) return;
     if (L->Act == NULL) return;
 
-    tDLElemPtr element = malloc(sizeof(tDLElemPtr));
+    tDLElemPtr element = malloc(sizeof(struct tDLElem));
     if (element == NULL) {
         DLError();
         return;
