@@ -158,6 +158,8 @@ void DeleteFirst (tList *L) {
     tElemPtr temp = L->First->ptr;
     free(L->First);
     L->First = temp;
+
+    return;
 }	
 
 void PostDelete (tList *L) {
@@ -167,8 +169,18 @@ void PostDelete (tList *L) {
 ** nic se neděje.
 **/
 	
-	
- solved = FALSE;                   /* V případě řešení, smažte tento řádek! */
+    if (L->Act == NULL || L->Act->ptr == NULL) return;
+    for (tElemPtr temp = L->First; temp != NULL && temp->ptr != NULL; temp = temp->ptr) {
+        if (temp == L->Act) {
+            temp = L->Act->ptr;
+            L->Act->ptr = L->Act->ptr->ptr;
+            free(temp);
+            
+            return;
+        }
+    }
+
+    return;
 }
 
 void PostInsert (tList *L, int val) {
@@ -180,7 +192,6 @@ void PostInsert (tList *L, int val) {
 **/
 	
 	
- solved = FALSE;                   /* V případě řešení, smažte tento řádek! */
 }
 
 void Copy (tList *L, int *val) {
@@ -189,8 +200,13 @@ void Copy (tList *L, int *val) {
 ** Pokud seznam není aktivní, zavolá funkci Error().
 **/
 	
-	
- solved = FALSE;                   /* V případě řešení, smažte tento řádek! */
+	if (L->Act == NULL) {
+        Error();
+        return;
+    }
+    val = &L->Act->data;
+
+    return;
 }
 
 void Actualize (tList *L, int val) {
@@ -199,8 +215,10 @@ void Actualize (tList *L, int val) {
 ** Pokud seznam L není aktivní, nedělá nic!
 **/
 	
-	
- solved = FALSE;                   /* V případě řešení, smažte tento řádek! */
+    if (L->Act == NULL) return;
+	L->Act->data = val;
+
+    return;
 }
 
 void Succ (tList *L) {
@@ -210,8 +228,10 @@ void Succ (tList *L) {
 ** Pokud není předaný seznam L aktivní, nedělá funkce nic.
 **/
 	
-	
- solved = FALSE;                   /* V případě řešení, smažte tento řádek! */
+	if (L->Act == NULL) return;
+    L->Act = L->Act->ptr;
+
+    return;
 }
 
 int Active (tList *L) {
