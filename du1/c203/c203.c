@@ -78,11 +78,13 @@ void queueInit (tQueue* q) {
 ** queueError(QERR_INIT).
 */
 
+	//kontrola
 	if (q == NULL) {
 		queueError(QERR_INIT);
 		return;
 	}
 
+	//inicializacia fronty
 	for (int i = 0; i < QUEUE_SIZE; i++) q->arr[i] = '*';
 	q->f_index = 0;
 	q->b_index = 0;
@@ -97,6 +99,7 @@ int nextIndex (int index) {
 ** Funkci nextIndex budete vyu��vat v dal��ch implementovan�ch funkc�ch.
 */
 
+	//navrat (index+1) % velkost pola
 	return (++index % QUEUE_SIZE);
 }
 
@@ -106,8 +109,10 @@ int queueEmpty (const tQueue* q) {
 ** Funkci je vhodn� implementovat jedn�m p��kazem return.
 */
 
+	//kontrola
 	if (q == NULL) return 0;
 
+	//navrat 1 - prazdna fronta , 0 - nie je prazdna fronta
 	return (q->b_index == q->f_index ? 1 : 0);
 }
 
@@ -118,8 +123,10 @@ int queueFull (const tQueue* q) {
 ** s vyu�it�m pomocn� funkce nextIndex.
 */
 
+	//kontrola
 	if (q == NULL) return 0;
 
+	//navrat 1- plna fronta , 0 - nie je plna fronta
 	return (nextIndex(q->b_index) == q->f_index ? 1 : 0);
 }
 
@@ -135,12 +142,14 @@ void queueFront (const tQueue* q, char* c) {
 ** P�i implementaci vyu�ijte d��ve definovan� funkce queueEmpty.
 */
 
+	//kontrola
 	if (q == NULL) return;
 	if (queueEmpty(q)) {
 		queueError(QERR_FRONT);
 		return;
 	}
 
+	//navrat prveho znaku vo fronte
 	*c = q->arr[q->f_index];
 
 	return;
@@ -154,12 +163,14 @@ void queueRemove (tQueue* q) {
 ** P�i implementaci vyu�ijte d��ve definovan� funkce queueEmpty a nextIndex.
 */
 
+	//kontrola
 	if (q == NULL) return;
 	if (queueEmpty(q)) {
 		queueError(QERR_REMOVE);
 		return;
 	}
 
+	//odstranenie prveho znaku vo fronte
 	q->f_index = nextIndex(q->f_index);
 
 	return;
@@ -174,12 +185,14 @@ void queueGet (tQueue* q, char* c) {
 ** queueFront a queueRemove.
 */
 
+	//kontrola
 	if (q == NULL) return;
 	if (queueEmpty(q)) {
 		queueError(QERR_GET);
 		return;
 	}
 
+	//navrat a odstranenie prveho znaku vo fronte
 	queueFront(q, c);
 	q->f_index = nextIndex(q->f_index);
 
@@ -197,12 +210,14 @@ void queueUp (tQueue* q, char c) {
 ** P�i implementaci vyu�ijte d��ve definovan�ch funkc� queueFull a nextIndex.
 */
 
+	//kontrola
 	if (q == NULL) return;
 	if (queueFull(q)) {
 		queueError(QERR_UP);
 		return;
 	}
 
+	//pridanie prvku do fronty na volne miesto
 	q->arr[q->b_index] = c;
 	q->b_index = nextIndex(q->b_index);
 

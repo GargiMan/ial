@@ -70,8 +70,10 @@ void InitList (tList *L) {
 ** že neinicializované proměnné mají nedefinovanou hodnotu.
 **/
 
+    //kontrola
     if (L == NULL) return;
 	
+    //inicializacia
     L->First = NULL;
     L->Act = NULL;
 
@@ -85,14 +87,17 @@ void DisposeList (tList *L) {
 ** uvolněna voláním operace free.
 ***/
 
+    //kontrola
     if (L == NULL) return;
 
+    //mazanie prvkov
     while (L->First != NULL) {
         tElemPtr temp = L->First->ptr;
         free(L->First);
         L->First = temp;
     }
 
+    //nastavenie neaktivity
     L->Act = NULL;
 
     return;
@@ -105,14 +110,17 @@ void InsertFirst (tList *L, int val) {
 ** volá funkci Error().
 **/
     
+    //kontrola
     if (L == NULL) return;
 
+    //alokacia
     tElemPtr element = malloc(sizeof(struct tElem));
     if (element == NULL) {
         Error();
         return;
     }
 
+    //vkladanie do zoznamu a priradenie hodnoty
     element->data = val;
     element->ptr = L->First;
     L->First = element;
@@ -127,8 +135,10 @@ void First (tList *L) {
 ** zda je seznam L prázdný.
 **/
 	
+    //kontrola
     if (L == NULL) return;
 
+    //aktivita na prvy prvok
     L->Act = L->First;
 
     return;
@@ -140,12 +150,14 @@ void CopyFirst (tList *L, int *val) {
 ** Pokud je seznam L prázdný, volá funkci Error().
 **/
 	
+    //kontrola
     if (L == NULL) return;
     if (L->First == NULL) {
         Error();
         return;
     }
 
+    //navrat hodnoty
     *val = L->First->data;
 
     return;
@@ -158,10 +170,12 @@ void DeleteFirst (tList *L) {
 ** Pokud byl seznam L prázdný, nic se neděje.
 **/
 	
+    //kontrola
     if (L == NULL) return;
     if (L->First == NULL) return;
     if (L->First == L->Act) L->Act = NULL;
 
+    //mazanie prvku
     tElemPtr temp = L->First->ptr;
     free(L->First);
     L->First = temp;
@@ -176,9 +190,11 @@ void PostDelete (tList *L) {
 ** nic se neděje.
 **/
 	
+    //kontrola
     if (L == NULL) return;
     if (L->Act == NULL || L->Act->ptr == NULL) return;
 
+    //mazanie prvku
     tElemPtr temp = L->Act->ptr;
     L->Act->ptr = L->Act->ptr->ptr;
     free(temp);
@@ -194,15 +210,18 @@ void PostInsert (tList *L, int val) {
 ** zavolá funkci Error().
 **/
 	
+    //kontrola
     if (L == NULL) return;
     if (L->Act == NULL) return;
 
+    //alokacia
     tElemPtr element = malloc(sizeof(struct tElem));
     if (element == NULL) {
         Error();
         return;
     }
 
+    //vkladanie do zoznamu a priradenie hodnoty
     element->data = val;
     element->ptr = L->Act->ptr;
     L->Act->ptr = element;
@@ -216,12 +235,14 @@ void Copy (tList *L, int *val) {
 ** Pokud seznam není aktivní, zavolá funkci Error().
 **/
 	
+    //kontrola
     if (L == NULL) return;
 	if (L->Act == NULL) {
         Error();
         return;
     }
 
+    //navrat hodnoty
     *val = L->Act->data;
 
     return;
@@ -233,9 +254,11 @@ void Actualize (tList *L, int val) {
 ** Pokud seznam L není aktivní, nedělá nic!
 **/
 	
+    //kontrola
     if (L == NULL) return;
     if (L->Act == NULL) return;
     
+    //zmena hodnoty
 	L->Act->data = val;
 
     return;
@@ -248,9 +271,11 @@ void Succ (tList *L) {
 ** Pokud není předaný seznam L aktivní, nedělá funkce nic.
 **/
 	
+    //kontrola
     if (L == NULL) return;
 	if (L->Act == NULL) return;
 
+    //presun aktivity na dalsi prvok
     L->Act = L->Act->ptr;
 
     return;
@@ -262,8 +287,10 @@ int Active (tList *L) {
 ** Tuto funkci je vhodné implementovat jedním příkazem return. 
 **/
 	
+    //kontrola
     if (L == NULL) return 0;
 
+    //navrat 1 aktivny , 0 neaktivny
     return (L->Act == NULL ? 0 : 1);
 }
 
