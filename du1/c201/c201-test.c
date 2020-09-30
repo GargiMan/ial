@@ -285,7 +285,7 @@ int main(int argc, char *argv[])	{
     printf("\n[TEST06]\n");
     printf("Test funkce Copy při aktivitě na prvním prvku\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    test_CopyFirst();
+    test_Copy();
  
     printf("\n[TEST07]\n");
     printf("Test funkce Succ -- voláme 3x, aktivita bude na posledním prvku.\n");

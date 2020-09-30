@@ -262,7 +262,7 @@ int Active (tList *L) {
 ** Tuto funkci je vhodné implementovat jedním příkazem return. 
 **/
 	
-    if (L == NULL) return;
+    if (L == NULL) return 0;
 
     return (L->Act == NULL ? 0 : 1);
 }

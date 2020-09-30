@@ -63,6 +63,8 @@ void queueError (int error_code) {
 		error_code = 0;
 	printf ( "%s\n", QERR_STRINGS[error_code] );
 	err_flag = 1;
+
+	return;
 }
 
 void queueInit (tQueue* q) {
@@ -76,9 +78,12 @@ void queueInit (tQueue* q) {
 ** queueError(QERR_INIT).
 */
 
-	if (q == NULL) queueError(QERR_INIT);
+	if (q == NULL) {
+		queueError(QERR_INIT);
+		return;
+	}
 
-	for (int i = 0; i < QUEUE_SIZE - 1; i++) q->arr[i] = '*';
+	for (int i = 0; i < QUEUE_SIZE; i++) q->arr[i] = '*';
 	q->f_index = 0;
 	q->b_index = 0;
 
@@ -92,7 +97,7 @@ int nextIndex (int index) {
 ** Funkci nextIndex budete vyu��vat v dal��ch implementovan�ch funkc�ch.
 */
 
-	return (QUEUE_SIZE-1) % index;
+	return (++index % QUEUE_SIZE);
 }
 
 int queueEmpty (const tQueue* q) {
@@ -101,7 +106,9 @@ int queueEmpty (const tQueue* q) {
 ** Funkci je vhodn� implementovat jedn�m p��kazem return.
 */
 
-	return (q->b_index == 0 ? 1 : 0);
+	if (q == NULL) return 0;
+
+	return (q->b_index == q->f_index ? 1 : 0);
 }
 
 int queueFull (const tQueue* q) {
@@ -111,7 +118,9 @@ int queueFull (const tQueue* q) {
 ** s vyu�it�m pomocn� funkce nextIndex.
 */
 
-	return (nextIndex());
+	if (q == NULL) return 0;
+
+	return (nextIndex(q->b_index) == q->f_index ? 1 : 0);
 }
 
 void queueFront (const tQueue* q, char* c) {
@@ -126,7 +135,15 @@ void queueFront (const tQueue* q, char* c) {
 ** P�i implementaci vyu�ijte d��ve definovan� funkce queueEmpty.
 */
 
-	  solved = FALSE;                  /* V p��pad� �e�en�, sma�te tento ��dek! */
+	if (q == NULL) return;
+	if (queueEmpty(q)) {
+		queueError(QERR_FRONT);
+		return;
+	}
+
+	*c = q->arr[q->f_index];
+
+	return;
 }
 
 void queueRemove (tQueue* q) {
@@ -137,7 +154,15 @@ void queueRemove (tQueue* q) {
 ** P�i implementaci vyu�ijte d��ve definovan� funkce queueEmpty a nextIndex.
 */
 
-	  solved = FALSE;                  /* V p��pad� �e�en�, sma�te tento ��dek! */
+	if (q == NULL) return;
+	if (queueEmpty(q)) {
+		queueError(QERR_REMOVE);
+		return;
+	}
+
+	q->f_index = nextIndex(q->f_index);
+
+	return;
 }
 
 void queueGet (tQueue* q, char* c) {
@@ -149,7 +174,16 @@ void queueGet (tQueue* q, char* c) {
 ** queueFront a queueRemove.
 */
 
-	  solved = FALSE;                  /* V p��pad� �e�en�, sma�te tento ��dek! */
+	if (q == NULL) return;
+	if (queueEmpty(q)) {
+		queueError(QERR_GET);
+		return;
+	}
+
+	queueFront(q, c);
+	q->f_index = nextIndex(q->f_index);
+
+	return;
 }
 
 void queueUp (tQueue* q, char c) {
@@ -163,6 +197,15 @@ void queueUp (tQueue* q, char c) {
 ** P�i implementaci vyu�ijte d��ve definovan�ch funkc� queueFull a nextIndex.
 */
 
-	  solved = FALSE;                  /* V p��pad� �e�en�, sma�te tento ��dek! */
+	if (q == NULL) return;
+	if (queueFull(q)) {
+		queueError(QERR_UP);
+		return;
+	}
+
+	q->arr[q->b_index] = c;
+	q->b_index = nextIndex(q->b_index);
+
+	return;
 }
 /* Konec p��kladu c203.c */
