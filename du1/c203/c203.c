@@ -76,7 +76,13 @@ void queueInit (tQueue* q) {
 ** queueError(QERR_INIT).
 */
 
-	  solved = FALSE;                  /* V p��pad� �e�en�, sma�te tento ��dek! */
+	if (q == NULL) queueError(QERR_INIT);
+
+	for (int i = 0; i < QUEUE_SIZE - 1; i++) q->arr[i] = '*';
+	q->f_index = 0;
+	q->b_index = 0;
+
+	return;
 }
 
 int nextIndex (int index) {
@@ -86,8 +92,7 @@ int nextIndex (int index) {
 ** Funkci nextIndex budete vyu��vat v dal��ch implementovan�ch funkc�ch.
 */
 
-	  solved = FALSE;                  /* V p��pad� �e�en�, sma�te tento ��dek! */
-
+	return (QUEUE_SIZE-1) % index;
 }
 
 int queueEmpty (const tQueue* q) {
@@ -96,7 +101,7 @@ int queueEmpty (const tQueue* q) {
 ** Funkci je vhodn� implementovat jedn�m p��kazem return.
 */
 
-	  solved = FALSE;                  /* V p��pad� �e�en�, sma�te tento ��dek! */
+	return (q->b_index == 0 ? 1 : 0);
 }
 
 int queueFull (const tQueue* q) {
@@ -106,7 +111,7 @@ int queueFull (const tQueue* q) {
 ** s vyu�it�m pomocn� funkce nextIndex.
 */
 
-	  solved = FALSE;                  /* V p��pad� �e�en�, sma�te tento ��dek! */
+	return (nextIndex());
 }
 
 void queueFront (const tQueue* q, char* c) {
