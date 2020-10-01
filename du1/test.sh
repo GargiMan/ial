@@ -7,10 +7,12 @@
 # put in folder with homework directories which contain files for testing
 # using make and valgrind, install them
 # makefile should have clean
+# if you changed (upgraded) basic tests , ignore output compare
 
 # ./test.sh             => run all tests with all directories
 # ./test.sh [name]      => run tests with inserted directory name
-# ./test.sh -clean      => delete all generated files by this script (including make clean)
+# ./test.sh -clean      => delete all generated files by this script (cxxx-my.output file and  run make clean)
+# to redirect output from script to file use ./test.sh >file
 
 # homework directory names (split with space)
 export DIRS="c201 c203 c206"
@@ -41,7 +43,7 @@ for FILE in $DIRS; do
 		
         echo "-------------------make-------------------"
         make clean >/dev/null
-        make | grep -v 'gcc'
+        make 2>&1 1>/dev/null
         if [ ! -f "$FILE-test" ]; then 
             cd ..; 
             continue; 
