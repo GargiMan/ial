@@ -134,7 +134,7 @@ void First (tList *L) {
 ** Funkci implementujte jako jediný příkaz, aniž byste testovali,
 ** zda je seznam L prázdný.
 **/
-	
+
     //kontrola
     if (L == NULL) return;
 

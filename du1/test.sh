@@ -3,7 +3,7 @@
 # put in folder with homework directories
 
 # need to install make and valgrind
-# makefile should have clean option
+# makefile should have clean
 
 # homework directory names (split with space)
 export DIRS="c201 c203 c206"
@@ -31,7 +31,7 @@ for FILE in $DIRS; do
         echo "==================-$FILE-============================================================="
         echo "-------------------make-------------------"
         make clean >/dev/null
-        make | grep -v 'gcc -Wall -std=c99 -pedantic -lm -o'
+        make | grep -v 'gcc'
         if [ ! -f "$FILE-test" ]; then 
             cd ..; 
             continue; 
@@ -43,7 +43,7 @@ for FILE in $DIRS; do
         valgrind ./"$FILE"-test 2>&1 | grep 'All heap blocks were freed -- no leaks are possible' >/dev/null && echo "Memory free ok" || valgrind ./"$FILE"-test 2>&1 | awk '/HEAP/,/suppressed: .+ blocks$/'
         echo "--------------output-compare--------------"
         ./"$FILE"-test >"$FILE"-my.output
-        diff -s "$FILE"*.output | grep -v "identical" || echo "Output ok"
+        diff -su "$FILE"*.output | grep -v "identical" || echo "Output same ok"
         cd ..
         printf "\n"
         if [ "$FILE" = "$1" ]; then exit; fi
