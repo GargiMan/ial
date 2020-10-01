@@ -1,24 +1,33 @@
 #!/bin/sh
+#---------------------------------INFO-AND-SETUP---------------------------------------------------------------
 
-# put in folder with homework directories
+# Testing for IAL homeworks (Make, Memory check, Basic tests)
+# by Gargi
 
-# need to install make and valgrind
+# put in folder with homework directories which contain files for testing
+# using make and valgrind, install them
 # makefile should have clean
+
+# ./test.sh             => run all tests with all directories
+# ./test.sh [name]      => run tests with inserted directory name
+# ./test.sh -clean      => delete all generated files by this script (including make clean)
 
 # homework directory names (split with space)
 export DIRS="c201 c203 c206"
 
-# script
+#--------------------------------------SCRIPT------------------------------------------------------------------
 for FILE in $DIRS; do
-    if [ "$1" = "clean" ]; then
+    if [ "$1" = "-clean" ]; then
         cd "$FILE" 2>/dev/null || echo "Directory '$FILE' doesn't exist or you don't have permissions"
         if [ ! -f "Makefile" ]; then continue; fi
         printf "\n"
         echo "==================-$FILE-============================================================="
+		
         echo "-------------------clean------------------"
         make clean >/dev/null
         rm -f "$FILE"-my.output 
-        echo Clean ok
+        echo "Files deleted ok"
+		
         cd ..
         printf "\n"
         continue
@@ -29,6 +38,7 @@ for FILE in $DIRS; do
         if [ ! -f "Makefile" ]; then continue; fi
         printf "\n"
         echo "==================-$FILE-============================================================="
+		
         echo "-------------------make-------------------"
         make clean >/dev/null
         make | grep -v 'gcc'
@@ -36,22 +46,25 @@ for FILE in $DIRS; do
             cd ..; 
             continue; 
         else
-            echo "Make ok"
+            echo "Executable file exist ok"
         fi
+		
         echo "--------------valgrind-check--------------"
-        valgrind -q ./"$FILE"-test 2>&1 | grep -v 'error calling PR_SET_PTRACER, vgdb might block' | grep '==[0-9][0-9][0-9][0-9]==' || echo "Malloc and memory acces ok"
-        valgrind ./"$FILE"-test 2>&1 | grep 'All heap blocks were freed -- no leaks are possible' >/dev/null && echo "Memory free ok" || valgrind ./"$FILE"-test 2>&1 | awk '/HEAP/,/suppressed: .+ blocks$/'
-        echo "--------------output-compare--------------"
+        valgrind -q ./"$FILE"-test 2>&1 | grep -v 'error calling PR_SET_PTRACER, vgdb might block' | 
+			grep '==[0-9][0-9][0-9][0-9]==' || echo "Malloc and memory access ok"
+        valgrind ./"$FILE"-test 2>&1 | grep 'All heap blocks were freed -- no leaks are possible' >/dev/null &&
+			echo "Memory all free ok" || valgrind ./"$FILE"-test 2>&1 | awk '/HEAP/,/suppressed: .+ blocks$/'
+			
+        echo "------------basic-tests-compare-----------"
         ./"$FILE"-test >"$FILE"-my.output
         diff -su "$FILE"*.output | grep -v "identical" || echo "Output same ok"
+		
         cd ..
         printf "\n"
         if [ "$FILE" = "$1" ]; then exit; fi
         continue
     fi
 
-    if [ -d "$1" ]; then
-        echo "Directory '$1' is not listed"
-    fi
-    exit
+    echo "$DIRS" | grep -vc "$1" >/dev/null;
+    if [ $? -eq 0 ]; then echo "Directory '$1' is not listed"; exit; fi
 done
