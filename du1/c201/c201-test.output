@@ -103,6 +103,56 @@ Provedeme ještě jednou Succ -- aktivita se ztratí.
 Operace Active vrací 0.
 
 [TEST10]
+Pokusíme se o aktualizaci při neaktivním seznamu => nic
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+	 4
+	 3
+	 2
+	 10
+-----------------
+Operace Active vrací 0.
+
+[TEST11]
+Pokus o Copy při neaktivním seznamu => ošetřená chyba
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*ERROR* The program has performed an illegal operation.
+Operace Copy volala funkci Error.
+
+[TEST12]
+Operace Succ při neaktivním seznamu nesmí zhavarovat.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+	 4
+	 3
+	 2
+	 10
+-----------------
+Operace Active vrací 0.
+
+[TEST13]
+Použití operace CopyFirst při neaktivním seznamu
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Operace CopyFirst vrací obsah 4.
+
+[TEST14]
+Vyzkoušíme operaci DeleteFirst při neaktivním seznamu,
+přičemž smazaný prvek zase vrátíme zpátky do seznamu.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+	 3
+	 2
+	 10
+-----------------
+-----------------
+	 4
+	 3
+	 2
+	 10
+-----------------
+Operace Active vrací 0.
+
+[TEST10]
 Operace First nastaví aktivitu na první prvek.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
@@ -221,5 +271,54 @@ Otestujeme funkčnost operace DisposeList.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
 -----------------
+
+[TEST24]
+
+Následuje testování operací při prázdném seznamu
+================================================
+Operace Active vrací 0.
+
+[TEST25]
+DeleteFirst při prázdném seznamu => nic
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST26]
+Test PostDelete při prázdném seznamu => nic
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+-----------------
+-----------------
+
+[TEST27]
+Ještě jednou DisposeList => žádná změna
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST28]
+First ani PostInsert nad prázdným seznamem nic nedělá.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+-----------------
+-----------------
+
+[TEST29]
+Copy a CopyFirst nad prázdným seznamem => ošetřená chyba
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*ERROR* The program has performed an illegal operation.
+Operace Copy volala funkci Error.
+*ERROR* The program has performed an illegal operation.
+Operace CopyFirst volala funkci Error.
+
+[TEST30]
+Actualize ani Succ by neměly mít nad prázdným seznamem žádny efekt.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+-----------------
+-----------------
+Operace Active vrací 0.
 
 ----------------------- konec příkladu c201 -------------------------

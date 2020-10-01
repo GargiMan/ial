@@ -258,9 +258,13 @@ void DLDeleteFirst (tDLList *L) {
 
     //mazanie prvku
     tDLElemPtr temp = L->First->rptr;
+    if (temp == NULL) {
+        L->First = NULL;
+    } else {
+        temp->lptr = NULL;
+    }
     free(L->First);
     L->First = temp;
-    L->First->lptr = NULL;
 
     return;
 }	
@@ -279,9 +283,13 @@ void DLDeleteLast (tDLList *L) {
 
     //mazanie prvku
     tDLElemPtr temp = L->Last->lptr;
+    if (temp == NULL) {
+        L->First = NULL;
+    } else {
+        temp->rptr = NULL;
+    }
     free(L->Last);
     L->Last = temp;
-    L->Last->rptr = NULL;
 
     return;
 }
