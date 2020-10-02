@@ -57,9 +57,9 @@ for FILE in $DIRS; do
         valgrind ./"$FILE"-test 2>&1 | grep 'All heap blocks were freed -- no leaks are possible' >/dev/null &&
 			echo "Memory all free ok" || valgrind ./"$FILE"-test 2>&1 | awk '/HEAP/,/suppressed: .+ blocks$/'
 			
-        echo "------------basic-tests-compare-----------"
+        echo "---------------tests-compare--------------"
         ./"$FILE"-test >"$FILE"-my.output
-        diff -su "$FILE"*.output | grep -v "identical" || echo "Output same ok"
+        diff -su "$FILE"*.output | grep -v "identical" || echo "Output files same ok"
 		
         cd ..
         printf "\n"
