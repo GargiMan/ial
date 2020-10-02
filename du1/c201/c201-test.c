@@ -238,10 +238,10 @@ int test_DisposeList() {
 }
 
 /*******************************************************************************
- * POKROÈILÉ TESTY
+ * POKROČILÉ TESTY
  * ---------------
- * Nejsou dostupné studentùm pøi øe¹ení domácích úloh.
- * Za jejich úspì¹né projítí získá student druhou èást bodù za pøíklad.
+ * Nejsou dostupné studentúm pri řešení domácích úloh.
+ * Za jejich úspěšné projítí získá student druhou část bodú za příklad.
  *
  ******************************************************************************/
 
@@ -250,7 +250,7 @@ int main(int argc, char *argv[])	{
     printf("Jednosměrně vázaný lineární seznam\n");
     printf("==================================\n");
 
-                            /* Testy 01 a¾ 09 se shodují se základními testy. */
+                            /* Testy 01 až 09 se shodují se základními testy. */
 
     printf("\n[TEST01]\n");
     printf("Inicializace seznamu\n");
@@ -308,7 +308,7 @@ int main(int argc, char *argv[])	{
     test_Succ();
     test_Active();
 
-           /* Testy 10 a¾ 14 testují chování operací nad neaktivním seznamem. */
+           /* Testy 10 až 14 testují chování operací nad neaktivním seznamem. */
 
     printf("\n[TEST10]\n");
     printf("Pokusíme se o aktualizaci při neaktivním seznamu => nic\n");
@@ -341,7 +341,7 @@ int main(int argc, char *argv[])	{
     test_InsertFirst();
     test_Active();
 
-                   /* Testy 15 a¾ 23 se shodují se základními testy 10 a¾ 18. */
+                   /* Testy 15 až 23 se shodují se základními testy 10 až 18. */
 
     printf("\n[TEST10]\n");
     printf("Operace First nastaví aktivitu na první prvek.\n");
@@ -409,7 +409,7 @@ int main(int argc, char *argv[])	{
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_DisposeList();
 
-             /* Testy 24 a¾ 30 testují chování operací nad prázdným seznamem. */
+             /* Testy 24 až 30 testují chování operací nad prázdným seznamem. */
 
     printf("\n[TEST24]\n");
     printf("\n");

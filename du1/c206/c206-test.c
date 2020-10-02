@@ -311,10 +311,10 @@ int test_DLActive()	{
 }
 
 /*******************************************************************************
- * POKRO�IL� TESTY
+ * POKROČILÉ TESTY
  * ---------------
- * Nejsou dostupn� student�m p�i �e�en� dom�c�ch �loh.
- * Za jejich �sp�n� proj�t� z�sk� student druhou ��st bod� za p��klad.
+ * Nejsou dostupné studentúm pri řešení domácích úloh.
+ * Za jejich úspěšné projítí získá student druhou část bodú za příklad.
  *
  ******************************************************************************/
 
@@ -330,7 +330,7 @@ int main(int argc, char *argv[])	{
 
     if(showFirstLast)
         printf("\nFirst: %d, Last: %d\n",TEMPLIST.First->data,TEMPLIST.Last->data);
-                     /* Testy 02 a 03 jsou zde nav�c oproti z�kladn�m test�m. */
+                     /* Testy 02 a 03 jsou zde navíc oproti základním testúm. */
     printf("\n[TEST02]\n");
     printf("Pokus o volání DLCopyFirst na prázdný seznam => chyba\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -361,7 +361,7 @@ int main(int argc, char *argv[])	{
 
     if(showFirstLast)
         printf("\nFirst: %d, Last: %d\n",TEMPLIST.First->data,TEMPLIST.Last->data);
-                             /* Test 05 je zde nav�c oproti z�kladn�m test�m. */
+                             /* Test 05 je zde navíc oproti základním testúm. */
     printf("\n[TEST05]\n");
     printf("Seznam by měl být neaktivní -- ověříme si to voláním DLActive.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -369,7 +369,7 @@ int main(int argc, char *argv[])	{
 
     if(showFirstLast)
         printf("\nFirst: %d, Last: %d\n",TEMPLIST.First->data,TEMPLIST.Last->data);
-                      /* Testy 06 a� 10 odpov�daj� z�kladn�m test�m 03 a� 07. */
+                      /* Testy 06 až 10 odpovídají základním testúm 03 až 07. */
     printf("\n[TEST06]\n");
     printf("Otestujeme funkci DLFirst při neaktivním seznamu a funkci DLActive.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -417,7 +417,7 @@ int main(int argc, char *argv[])	{
 
     if(showFirstLast)
         printf("\nFirst: %d, Last: %d\n",TEMPLIST.First->data,TEMPLIST.Last->data);
-                     /* Z�kladn� testy 08 a� 10 zde nahrad�me testem 11 a 12. */
+                     /* Základní testy 08 až 10 zde nahradíme testem 11 a 12. */
     printf("\n[TEST11]\n");
     printf("Provedeme ještě jednou DLPred -- aktivita se ztratí.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -436,7 +436,7 @@ int main(int argc, char *argv[])	{
 
     if(showFirstLast)
         printf("\nFirst: %d, Last: %d\n",TEMPLIST.First->data,TEMPLIST.Last->data);
-                                                     /* Test 13 je zde nav�c. */
+                                                     /* Test 13 je zde navíc. */
     printf("\n[TEST13]\n");
     printf("Pokusíme se o aktualizaci při neaktivním seznamu => nic \n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -446,7 +446,7 @@ int main(int argc, char *argv[])	{
 
     if(showFirstLast)
         printf("\nFirst: %d, Last: %d\n",TEMPLIST.First->data,TEMPLIST.Last->data);
-                                     /* Test 14 odpov�d� z�kladn�mu testu 11. */
+                                     /* Test 14 odpovídá základnímu testu 11. */
     printf("\n[TEST14]\n");
     printf("Pokus o DLCopy při neaktivním seznamu => ošetřená chyba.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -454,7 +454,7 @@ int main(int argc, char *argv[])	{
 
     if(showFirstLast)
         printf("\nFirst: %d, Last: %d\n",TEMPLIST.First->data,TEMPLIST.Last->data);
-                                             /* Testy 15 a 16 jsou zde nav�c. */
+                                             /* Testy 15 a 16 jsou zde navíc. */
     printf("\n[TEST15]\n");
     printf("DLSucc při neaktivním seznamu nesmí zhavarovat.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -472,7 +472,7 @@ int main(int argc, char *argv[])	{
 
     if(showFirstLast)
         printf("\nFirst: %d, Last: %d\n",TEMPLIST.First->data,TEMPLIST.Last->data);
-                      /* Testy 17 a� 20 odpov�daj� z�kladn�m test�m 12 a� 15. */
+                      /* Testy 17 až 20 odpovídají základním testúm 12 až 15. */
     printf("\n[TEST17]\n");
     printf("Použití operace DLCopyFirst při neaktivním seznamu\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -506,7 +506,7 @@ int main(int argc, char *argv[])	{
 
     if(showFirstLast)
         printf("\nFirst: %d, Last: %d\n",TEMPLIST.First->data,TEMPLIST.Last->data);
-                        /* D�le se ji� od z�kladn�ch test� v�razn� odch�l�me. */
+                        /* Dále se již od základních testú výrazně odchýlíme. */
     printf("\n[TEST21]\n");
     printf("Operace DLFirst nastaví aktivitu na první prvek.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -551,7 +551,7 @@ int main(int argc, char *argv[])	{
 
     if(showFirstLast)
         printf("\nFirst: %d, Last: %d\n",TEMPLIST.First->data,TEMPLIST.Last->data);
-           /* Te� m�me pr�zdn� seznam, tak si pro dal�� testy vytvo��me nov�. */
+           /* Teď máme prázdný seznam, tak si pro další testy vytvoříme nový. */
     printf("\n[TEST26]\n");
     printf("Voláme 2x operaci DLInsertLast a 1x operaci DLInsertFirst.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -581,7 +581,7 @@ int main(int argc, char *argv[])	{
 
     if(showFirstLast)
         printf("\nFirst: %d, Last: %d\n",TEMPLIST.First->data,TEMPLIST.Last->data);
-                                     /* Test 29 odpov�d� z�kladn�mu testu 16. */
+                                     /* Test 29 odpovídí základnímu testu 16. */
     printf("\n[TEST29]\n");
     printf("Operace DLPostDelete při aktivitě na posledním prvku nedělá nic.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -720,7 +720,7 @@ int main(int argc, char *argv[])	{
     if(showFirstLast)
         printf("\nFirst: %d, Last: %d\n",TEMPLIST.First->data,TEMPLIST.Last->data);
 
-                                   /* Testov�n� operac� p�i pr�zdn�m seznamu. */
+                                   /* Testování operací při prázdným seznamu. */
     printf("\nNásleduje testování operací při prázdném seznamu\n");
     printf("================================================\n");
 
