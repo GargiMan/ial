@@ -1,3 +1,7 @@
+// c206.c
+// Řešení IAL-DU1, 4.10.2020
+// Autor: Marek Gergel, FIT
+// Přeloženo: gcc 7.5.0
 
 /* c206.c **********************************************************}
 {* Téma: Dvousměrně vázaný lineární seznam
