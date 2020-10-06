@@ -198,7 +198,7 @@ void queueGet (tQueue* q, char* c) {
 
 	//navrat a odstranenie prveho znaku vo fronte
 	queueFront(q, c);
-	q->f_index = nextIndex(q->f_index);
+	queueRemove(q);
 
 	return;
 }
