@@ -117,7 +117,7 @@ int queueEmpty (const tQueue* q) {
 	if (q == NULL) return 0;
 
 	//navrat 1 - prazdna fronta , 0 - nie je prazdna fronta
-	return (q->b_index == q->f_index ? 1 : 0);
+	return (q->b_index == q->f_index);
 }
 
 int queueFull (const tQueue* q) {
@@ -131,7 +131,7 @@ int queueFull (const tQueue* q) {
 	if (q == NULL) return 0;
 
 	//navrat 1- plna fronta , 0 - nie je plna fronta
-	return (nextIndex(q->b_index) == q->f_index ? 1 : 0);
+	return (nextIndex(q->b_index) == q->f_index);
 }
 
 void queueFront (const tQueue* q, char* c) {
