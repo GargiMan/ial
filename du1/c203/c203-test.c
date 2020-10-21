@@ -151,7 +151,7 @@ int main ( int argc, char* argv[] ) {
 	printf ("**************************************************\n");
 	printf ("* The explanation:                               *\n");
 	printf ("* ~~~~~~~~~~~~~~~~                               *\n");
-	printf ("* ? - not used yet                               *\n");
+	printf ("* * - not used yet                               *\n");
 	printf ("* F - Front                                      *\n");
 	printf ("* B - Back                                       *\n");
 	printf ("* E - Empty (F == B)                             *\n");
