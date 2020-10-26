@@ -1,4 +1,4 @@
-
+/**/
 
 /* **********************SOUBOR SE ST.TESTEM  ********************** */
 /* **********************-----------------   *********************** */
@@ -6,9 +6,7 @@
     predmet: Algoritmy (IAL) - FIT (Fakulta Informacnich Technologii)
     test pro soubor: c402.c
 	datum: rijen 2005
-
     kompletni upravy: Roman Lukas, 2006
-    upravil: Karel Masarik, rijen 2013
 													 */	
 /* ***************************************************************** */
 
@@ -16,12 +14,12 @@
 #include "c402.h"
 #include <string.h>
 
-tBTNodePtr TempTree;			/* deklarace testovaci promenne */ 
+tBTNodePtr TempTree;			// deklarace testovaci promenne 
 
 int Content;
 
 void Print_tree2(tBTNodePtr TempTree, char* sufix, char fromdir)
-/* vykresli sktrukturu binarniho stromu */
+//vykresli sktrukturu binarniho stromu
 
 {
      if (TempTree != NULL)
@@ -390,7 +388,152 @@ int main(int argc, char *argv[])			{
 	printf("~~~~~~~~~~~~~~~~~~\n");
 	test_BTDispose(&TempTree);
 		
+	printf("[TEST21]\n");
+	printf("Nyni si vytvorime jiny strom.\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	
+	printf("Vlozime prvek 1\n");
+	Content=1;
+	test_BTInsert(&TempTree, Content);
+	
+	printf("Vlozime prvek 2\n");
+	Content=2;
+	test_BTInsert(&TempTree, Content);
+	
+	printf("Vlozime prvek 3\n");
+	Content=3;
+	test_BTInsert(&TempTree, Content);   
+	
+	printf("Vlozime prvek 4\n");
+	Content=4;
+	test_BTInsert(&TempTree, Content);
+	
+	printf("Vlozime prvek 5\n");
+	Content=5;
+	test_BTInsert(&TempTree, Content);
+	
+	printf("Vlozime prvek 6\n");
+	Content=6;
+	test_BTInsert(&TempTree, Content);
+	
+	printf("Vlozime prvek 7\n");
+	Content=7;
+	test_BTInsert(&TempTree, Content);
+	
+	printf("Vlozime prvek 8\n");
+	Content=8;
+	test_BTInsert(&TempTree, Content);   
+	
+	printf("Vlozime prvek 9\n");
+	Content=9;
+	test_BTInsert(&TempTree, Content);
+	
+	printf("Vlozime prvek 10\n");
+	Content=10;
+	test_BTInsert(&TempTree, Content);
+		
+	Print_tree(TempTree);
+
+
+	printf("[TEST22]\n");
+	printf("Provedeme pruchod Pre-order, In-order a Post-order \n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	test_BTPreorder(TempTree);
+	test_BTInorder(TempTree);
+	test_BTPostorder(TempTree);
+	
+	printf("[TEST23]\n");
+	printf("Pokus o opetovne vlozeni prvku 5 (nesmi dojit ke zmene stromu) \n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	Content=5;
+	test_BTInsert(&TempTree, Content);
+	Print_tree(TempTree);
+	
+	printf("[TEST24]\n");
+	printf("Zrusime cely strom\n");
+	printf("~~~~~~~~~~~~~~~~~~\n");
+	test_BTDispose(&TempTree);
+
+	printf("[TEST25]\n");
+	printf("Nyni si vytvorime jiny strom.\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	
+	printf("Vlozime prvek 10\n");
+	Content=10;
+	test_BTInsert(&TempTree, Content);
+	
+	printf("Vlozime prvek 9\n");
+	Content=9;
+	test_BTInsert(&TempTree, Content);
+	
+	printf("Vlozime prvek 8\n");
+	Content=8;
+	test_BTInsert(&TempTree, Content);   
+	
+	printf("Vlozime prvek 7\n");
+	Content=7;
+	test_BTInsert(&TempTree, Content);
+	
+	printf("Vlozime prvek 6\n");
+	Content=6;
+	test_BTInsert(&TempTree, Content);
+	
+	printf("Vlozime prvek 5\n");
+	Content=5;
+	test_BTInsert(&TempTree, Content);
+	
+	printf("Vlozime prvek 4\n");
+	Content=4;
+	test_BTInsert(&TempTree, Content);
+	
+	printf("Vlozime prvek 3\n");
+	Content=3;
+	test_BTInsert(&TempTree, Content);   
+	
+	printf("Vlozime prvek 2\n");
+	Content=2;
+	test_BTInsert(&TempTree, Content);
+	
+	printf("Vlozime prvek 1\n");
+	Content=1;
+	test_BTInsert(&TempTree, Content);
+		
+	Print_tree(TempTree);
+
+
+	printf("[TEST26]\n");
+	printf("Provedeme pruchod Pre-order, In-order a Post-order \n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	test_BTPreorder(TempTree);
+	test_BTInorder(TempTree);
+	test_BTPostorder(TempTree);
+	
+	printf("[TEST27]\n");
+	printf("Pokus o opetovne vlozeni prvku 5 (nesmi dojit ke zmene stromu) \n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	Content=5;
+	test_BTInsert(&TempTree, Content);
+	Print_tree(TempTree);
+
+	printf("[TEST28]\n");
+	printf("Pokus o opetovne vlozeni prvku 10 (nesmi dojit ke zmene stromu) \n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	Content=10;
+	test_BTInsert(&TempTree, Content);
+	Print_tree(TempTree);
+	
+	printf("[TEST29]\n");
+	printf("Zrusime cely strom\n");
+	printf("~~~~~~~~~~~~~~~~~~\n");
+	test_BTDispose(&TempTree);
+
+	printf("[TEST30]\n");
+	printf("Zrusime cely strom\n");
+	printf("~~~~~~~~~~~~~~~~~~\n");
+	test_BTDispose(&TempTree);
+
 	printf("------------------------------ konec -------------------------------------\n");
 	
 	return(0);	
 }
+/**/

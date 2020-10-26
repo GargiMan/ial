@@ -17,6 +17,9 @@
 # homework directory names (split with space)
 export DIRS="c016 c401 c402"
 
+# skip output compare ("yes" for skip , anything for not)
+SKIPOUT="no"
+
 #--------------------------------------SCRIPT------------------------------------------------------------------
 for FILE in $DIRS; do
     if [ "$1" = "-clean" ]; then
@@ -43,7 +46,7 @@ for FILE in $DIRS; do
 		
         echo "-------------------make-------------------"
         make clean >/dev/null
-        make 2>&1 1>/dev/null
+        make >/dev/null
         if [ ! -f "$FILE-test" ]; then 
             cd ..; 
             continue; 
@@ -56,7 +59,12 @@ for FILE in $DIRS; do
 			grep '==[0-9][0-9][0-9][0-9]==' || echo "Malloc and memory access ok"
         valgrind ./"$FILE"-test 2>&1 | grep 'All heap blocks were freed -- no leaks are possible' >/dev/null &&
 			echo "Memory all free ok" || valgrind ./"$FILE"-test 2>&1 | awk '/HEAP/,/suppressed: .+ blocks$/'
-			
+
+        if [ "$SKIPOUT" = "yes" ]; then
+            cd ..;
+            continue;
+        fi
+
         echo "---------------tests-compare--------------"
         ./"$FILE"-test >"$FILE"-my.output
         diff -su "$FILE"*.output | grep -v "identical" || echo "Output files same ok"

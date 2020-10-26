@@ -24,7 +24,6 @@ Let's set HTSIZE to 19 ( must be prvocislo )
 18: (*UNDEF*,-1.00)
 ------------------------------------
 Items count 0   The longest list 0
-------------------------------------
 
 [TEST01] Table initialization
 ------------HASH TABLE--------------
@@ -49,15 +48,17 @@ Items count 0   The longest list 0
 18:
 ------------------------------------
 Items count 0   The longest list 0
-------------------------------------
 
-[TEST02] Let's try htInsert()
+[TEST02] Search for non-existing item
+NULL
+
+[TEST03] Let's try htInsert()
 ------------HASH TABLE--------------
-0: (krusovice,21.50)
+0:
 1:
 2:
 3:
-4:
+4: (rohlik,1.50)
 5:
 6:
 7:
@@ -74,143 +75,156 @@ Items count 0   The longest list 0
 18:
 ------------------------------------
 Items count 1   The longest list 1
-------------------------------------
 
-[TEST03] Search for existing item
-krusovice - 21.50
+[TEST04] Search for existing item
+rohlik - 1.50
 
-[TEST04] Let's insert next items
+[TEST05] Let's insert next items
 ------------HASH TABLE--------------
-0: (gambrinus,18.50) (krusovice,21.50)
-1:
+0: (gambrinus,18.50) (chleba,20.00)
+1: (cukr,25.50) (,14.60)
 2: (zlaty bazant,20.00)
-3: (plzen,25.00)
-4:
-5:
-6:
-7:
+3: (plzen,25.00) (jogurt,8.50) (vajicko,2.50) (ryze,26.10)
+4: (rohlik,1.50)
+5: (kecup,28.90)
+6: (spagety,14.60)
+7: (debrecinka,19.60)
 8:
-9:
-10: (kofola,16.00)
+9: (fish,99.90) (olej,32.50)
+10: (kofola,15.00)
 11: (korgon,18.00)
 12:
 13:
-14:
+14: (pepsi,30.00)
 15: (kelt,30.00)
 16:
-17: (velvet,28.00)
-18: (starobrno,16.50)
+17: (graham,4.50) (velvet,26.00)
+18: (sul,10.00) (fernet,95.00) (starobrno,16.50)
 ------------------------------------
-Items count 9   The longest list 2
-------------------------------------
+Items count 24   The longest list 4
 
-[TEST05] htSearch for "starobrno"
-starobrno - 16.50
-------------HASH TABLE--------------
-0: (gambrinus,18.50) (krusovice,21.50)
-1:
-2: (zlaty bazant,20.00)
-3: (plzen,25.00)
-4:
-5:
-6:
-7:
-8:
-9:
-10: (kofola,16.00)
-11: (korgon,18.00)
-12:
-13:
-14:
-15: (kelt,30.00)
-16:
-17: (velvet,28.00)
-18: (starobrno,16.50)
-------------------------------------
-Items count 9   The longest list 2
-------------------------------------
+[TEST06] htSearch for "kecup"
+kecup - 28.90
 
-[TEST06] Let's change korgon price to 12.50
-korgon - 12.50
-------------HASH TABLE--------------
-0: (gambrinus,18.50) (krusovice,21.50)
-1:
-2: (zlaty bazant,20.00)
-3: (plzen,25.00)
-4:
-5:
-6:
-7:
-8:
-9:
-10: (kofola,16.00)
-11: (korgon,12.50)
-12:
-13:
-14:
-15: (kelt,30.00)
-16:
-17: (velvet,28.00)
-18: (starobrno,16.50)
-------------------------------------
-Items count 9   The longest list 2
-------------------------------------
+[TEST07] Let's change kecup price to 12.50
+kecup - 12.50
 
-[TEST07] Is "starobahno" in table?
+[TEST08] Is "kiwi" in table?
 NULL
 ------------HASH TABLE--------------
-0: (gambrinus,18.50) (krusovice,21.50)
-1:
+0: (gambrinus,18.50) (chleba,20.00)
+1: (cukr,25.50) (,14.60)
 2: (zlaty bazant,20.00)
-3: (plzen,25.00)
-4:
-5:
-6:
-7:
+3: (plzen,25.00) (jogurt,8.50) (vajicko,2.50) (ryze,26.10)
+4: (rohlik,1.50)
+5: (kecup,12.50)
+6: (spagety,14.60)
+7: (debrecinka,19.60)
 8:
-9:
-10: (kofola,16.00)
-11: (korgon,12.50)
+9: (fish,99.90) (olej,32.50)
+10: (kofola,15.00)
+11: (korgon,18.00)
 12:
 13:
-14:
+14: (pepsi,30.00)
 15: (kelt,30.00)
 16:
-17: (velvet,28.00)
-18: (starobrno,16.50)
+17: (graham,4.50) (velvet,26.00)
+18: (sul,10.00) (fernet,95.00) (starobrno,16.50)
 ------------------------------------
-Items count 9   The longest list 2
-------------------------------------
+Items count 24   The longest list 4
 
-[TEST08] How much is korgon?
-12.50
+[TEST09] How much is the fish?
+99.90
 
-[TEST09] Lets delete gambrinus and kofola
+[TEST10] Change fish price to 105.50
+fish - 105.50
+
+[TEST11] How much is the fish?
+105.50
+
+[TEST12] How much is kiwi?
+NULL
+
+[TEST13] Let's delete non-existing "kiwi"
 ------------HASH TABLE--------------
-0: (krusovice,21.50)
-1:
+0: (gambrinus,18.50) (chleba,20.00)
+1: (cukr,25.50) (,14.60)
 2: (zlaty bazant,20.00)
-3: (plzen,25.00)
-4:
-5:
-6:
-7:
+3: (plzen,25.00) (jogurt,8.50) (vajicko,2.50) (ryze,26.10)
+4: (rohlik,1.50)
+5: (kecup,12.50)
+6: (spagety,14.60)
+7: (debrecinka,19.60)
 8:
-9:
-10:
-11: (korgon,12.50)
+9: (fish,105.50) (olej,32.50)
+10: (kofola,15.00)
+11: (korgon,18.00)
 12:
 13:
-14:
+14: (pepsi,30.00)
 15: (kelt,30.00)
 16:
-17: (velvet,28.00)
-18: (starobrno,16.50)
+17: (graham,4.50) (velvet,26.00)
+18: (sul,10.00) (fernet,95.00) (starobrno,16.50)
 ------------------------------------
-Items count 7   The longest list 1
-------------------------------------
+Items count 24   The longest list 4
 
-[TEST10] Let's delete whole table
+[TEST14] How much is the fish?
+105.50
+
+[TEST15] Lets delete fish twice
+------------HASH TABLE--------------
+0: (gambrinus,18.50) (chleba,20.00)
+1: (cukr,25.50) (,14.60)
+2: (zlaty bazant,20.00)
+3: (plzen,25.00) (jogurt,8.50) (vajicko,2.50) (ryze,26.10)
+4: (rohlik,1.50)
+5: (kecup,12.50)
+6: (spagety,14.60)
+7: (debrecinka,19.60)
+8:
+9: (olej,32.50)
+10: (kofola,15.00)
+11: (korgon,18.00)
+12:
+13:
+14: (pepsi,30.00)
+15: (kelt,30.00)
+16:
+17: (graham,4.50) (velvet,26.00)
+18: (sul,10.00) (fernet,95.00) (starobrno,16.50)
+------------------------------------
+Items count 23   The longest list 4
+
+[TEST16] How much is the fish?
+NULL
+
+[TEST17] Lets delete next items
+------------HASH TABLE--------------
+0: (chleba,20.00)
+1: (cukr,25.50)
+2:
+3: (jogurt,8.50) (vajicko,2.50) (ryze,26.10)
+4: (rohlik,1.50)
+5: (kecup,12.50)
+6: (spagety,14.60)
+7: (debrecinka,19.60)
+8:
+9: (olej,32.50)
+10: (kofola,15.00)
+11: (korgon,18.00)
+12:
+13:
+14: (pepsi,30.00)
+15:
+16:
+17: (graham,4.50)
+18: (sul,10.00) (fernet,95.00)
+------------------------------------
+Items count 16   The longest list 3
+
+[TEST18] Let's delete whole table
 ------------HASH TABLE--------------
 0:
 1:
@@ -233,9 +247,32 @@ Items count 7   The longest list 1
 18:
 ------------------------------------
 Items count 0   The longest list 0
-------------------------------------
 
-[TEST11] And search for non-existing velvet
+[TEST19] And try delete in empty table
+------------HASH TABLE--------------
+0:
+1:
+2:
+3:
+4:
+5:
+6:
+7:
+8:
+9:
+10:
+11:
+12:
+13:
+14:
+15:
+16:
+17:
+18:
+------------------------------------
+Items count 0   The longest list 0
+
+[TEST20] htSearch for "kecup" in empty table
 NULL
 ------------HASH TABLE--------------
 0:
@@ -259,29 +296,3 @@ NULL
 18:
 ------------------------------------
 Items count 0   The longest list 0
-------------------------------------
-
-[TEST12] And insert velvet again
-------------HASH TABLE--------------
-0:
-1:
-2:
-3:
-4:
-5:
-6:
-7:
-8:
-9:
-10:
-11:
-12:
-13:
-14:
-15:
-16:
-17: (velvet,28.00)
-18:
-------------------------------------
-Items count 1   The longest list 1
-------------------------------------

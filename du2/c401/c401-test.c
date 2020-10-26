@@ -1,3 +1,4 @@
+/**/
 
 /* **********************SOUBOR SE ST.TESTEM  ********************** */
 /* **********************-----------------   *********************** */
@@ -5,9 +6,7 @@
     predmet: Algoritmy (IAL) - FIT (Fakulta Informacnich Technologii)
     test pro soubor: c401.c
 	datum: rijen 2005
-
     kompletni upravy: Roman Lukas, 2006
-    upravil: Karel Masarik, rijen 2013
 													 */	
 /* ***************************************************************** */
 
@@ -15,14 +14,14 @@
 #include "c401.h"
 #include <string.h>
 
-tBSTNodePtr TempTree;			/* deklarace testovaci promenne */ 
+tBSTNodePtr TempTree;			// deklarace testovaci promenne 
 
 int Content_of_Search;
 int Content_of_Insert;
 char K;
 
 void Print_tree2(tBSTNodePtr TempTree, char* sufix, char fromdir)
-/* vykresli sktrukturu binarniho stromu */
+//vykresli sktrukturu binarniho stromu
 
 {
      if (TempTree != NULL)
@@ -189,7 +188,7 @@ int main(int argc, char *argv[])			{
 	BSTInsert(&TempTree,'I',9);
 	BSTInsert(&TempTree,'K',11);
 	BSTInsert(&TempTree,'M',13);
-	BSTInsert(&TempTree,'O',16);
+	BSTInsert(&TempTree,'O',15);
 	
 	Print_tree(TempTree);
 	
@@ -281,7 +280,82 @@ int main(int argc, char *argv[])			{
 	printf("Nakonec zrusime cely strom\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_BSTDispose(&TempTree);
+
+	printf("[TEST21]\n");
+	printf("Vlozime dalsi prvky a vytvorime tak degradovany binarni strom \n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	
+	BSTInsert(&TempTree,'C',3);
+	BSTInsert(&TempTree,'D',4);
+	BSTInsert(&TempTree,'E',5);
+	BSTInsert(&TempTree,'F',6);
+	BSTInsert(&TempTree,'G',7);
+	BSTInsert(&TempTree,'H',8);
+	BSTInsert(&TempTree,'I',9);
+	BSTInsert(&TempTree,'J',10);
+	
+	Print_tree(TempTree);
+	
+	printf("[TEST22]\n");
+	printf("Pokusime se vyhledat polozky s klici 'E', 'F'\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	K='E';
+	test_BSTSearch(TempTree,K,&Content_of_Search);
+	K='F';
+	test_BSTSearch(TempTree,K,&Content_of_Search);
+	
+	printf("[TEST23]\n");
+	printf("Pokusime se vyhledat polozky s klici 'A', 'B'\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	K='A';
+	test_BSTSearch(TempTree,K,&Content_of_Search);
+	K='B';
+	test_BSTSearch(TempTree,K,&Content_of_Search);
+	
+	printf("[TEST24]\n");
+	printf("Pridame vhodne jeste dalsi prvky \n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	
+	BSTInsert(&TempTree,'A',1);
+	BSTInsert(&TempTree,'B',2);
+	
+	Print_tree(TempTree);
+	
+	printf("[TEST25]\n");
+	printf("Zrusime uzel (A,1)\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	K = 'A';
+	test_BSTDelete(&TempTree,K);
+    
+	printf("[TEST26]\n");
+	printf("Zrusime uzel (B,2)\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	K = 'B';
+	test_BSTDelete(&TempTree, K);
+    
+	printf("[TEST27]\n");
+	printf("Zrusime uzel (J,10)\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	K = 'J';
+	test_BSTDelete(&TempTree, K);
+    
+	printf("[TEST28]\n");
+	printf("Pokusime se zrusit uzel, ktery neexistuje (U,?)\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	K = 'U';
+	test_BSTDelete(&TempTree, K);
+
+	printf("[TEST29]\n");
+	printf("Nakonec zrusime cely strom\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	test_BSTDispose(&TempTree);
+
+	printf("[TEST30]\n");
+	printf("Nakonec zrusime cely strom\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	test_BSTDispose(&TempTree);
 	
 	printf("------------------------------ konec -------------------------------------\n");
 	return(0);
 }
+/**/
