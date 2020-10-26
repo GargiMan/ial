@@ -13,17 +13,22 @@
 # ./test.sh [name]      => run tests with inserted directory name
 # ./test.sh -clean      => delete all generated files by this script (cxxx-my.output file and  run make clean)
 # to redirect output from script to file use ./test.sh >file
-
-# homework directory names (split with space)
-export DIRS="c016 c401 c402"
-
-# skip output compare ("yes" for skip , anything for not)
-SKIPOUT="no"
+# -s as first argument for skip output
 
 #--------------------------------------SCRIPT------------------------------------------------------------------
+
+SKIPTEST=0
+if [ "$1" = "-s" ]; then
+    shift
+    SKIPTEST=1
+fi
+
+DIRS=$(ls -d */ | cut -f1 -d'/')    #directories in $PWD without slash (/)
+DIRARG=$(echo $1 | cut -f1 -d'/')   #directory in arguments without slash (/)
+
 for FILE in $DIRS; do
     if [ "$1" = "-clean" ]; then
-        cd "$FILE" 2>/dev/null || echo "Directory '$FILE' doesn't exist or you don't have permissions"
+        cd "$FILE" 2>/dev/null || echo "\e[1;91mDirectory '$FILE' doesn't exist or you don't have permissions\e[0;39m"
         if [ ! -f "Makefile" ]; then continue; fi
         printf "\n"
         echo "==================-$FILE-============================================================="
@@ -31,50 +36,74 @@ for FILE in $DIRS; do
         echo "-------------------clean------------------"
         make clean >/dev/null
         rm -f "$FILE"-my.output 
-        echo "Files deleted ok"
+        echo "Files deleted \e[1;92mok \e[0;39m"
 		
         cd ..
-        printf "\n"
         continue
     fi
 
-    if [ -z "$1" ] || [ "$FILE" = "$1" ]; then
-        cd "$FILE" 2>/dev/null || echo "Directory $PWD '$FILE' doesn't exist or you don't have permissions"
+    if [ -z "$1" ] || [ "$FILE" = "$DIRARG" ]; then
+        cd "$FILE" 2>/dev/null || echo "\e[1;91mDirectory '$FILE' doesn't exist or you don't have permissions\e[0;39m"
         if [ ! -f "Makefile" ]; then continue; fi
         printf "\n"
         echo "==================-$FILE-============================================================="
 		
         echo "-------------------make-------------------"
+
         make clean >/dev/null
         make >/dev/null
-        if [ ! -f "$FILE-test" ]; then 
-            cd ..; 
-            continue; 
+        ERRCODE=$?
+
+        if [ "$ERRCODE" -eq 0 ]; then
+            echo "Executable file: \e[1;92mok \e[0;39m"
         else
-            echo "Executable file exist ok"
+            printf "\n"
+            echo "Executable file: \e[1;91mnot ok \e[0;39m"
+            cd ..
+            continue
         fi
 		
-        echo "--------------valgrind-check--------------"
+        echo "-----------------valgrind-----------------"
+
         valgrind -q ./"$FILE"-test 2>&1 | grep -v 'error calling PR_SET_PTRACER, vgdb might block' | 
-			grep '==[0-9][0-9][0-9][0-9]==' || echo "Malloc and memory access ok"
+			grep '==[0-9][0-9][0-9][0-9]==' || echo "Malloc and memory access: \e[1;92mok \e[0;39m"
         valgrind ./"$FILE"-test 2>&1 | grep 'All heap blocks were freed -- no leaks are possible' >/dev/null &&
-			echo "Memory all free ok" || valgrind ./"$FILE"-test 2>&1 | awk '/HEAP/,/suppressed: .+ blocks$/'
+			echo "Memory free: \e[1;92mok \e[0;39m" || valgrind ./"$FILE"-test 2>&1 | awk '/HEAP/,/suppressed: .+ blocks$/'
 
-        if [ "$SKIPOUT" = "yes" ]; then
-            cd ..;
-            continue;
+
+        echo "-------------------test-------------------"
+
+        if [ "$SKIPTEST" -eq 1 ]; then
+            echo "Output files: \e[1;93mskipped \e[0;39m"
+            cd ..
+            continue
+        else 
+            # create comparable file and compare for exit code
+            ./"$FILE"-test >"$FILE"-my.output
+		    diff -su "$FILE"*.output >/dev/null 2>&1
+        
+            # exit code 0 - correct , X - print output
+            if [ "$?" -eq 0 ]; then
+                echo "Output files: \e[1;92mok \e[0;39m"
+            else 
+                diff -su "$FILE"*.output
+            fi
+
+            cd ..
         fi
 
-        echo "---------------tests-compare--------------"
-        ./"$FILE"-test >"$FILE"-my.output
-        diff -su "$FILE"*.output | grep -v "identical" || echo "Output files same ok"
-		
-        cd ..
-        printf "\n"
+        # exit if only 1 part should be tested
         if [ "$FILE" = "$1" ]; then exit; fi
         continue
     fi
 
-    echo "$DIRS" | grep -vc "$1" >/dev/null;
-    if [ $? -eq 0 ]; then echo "Directory '$1' is not listed"; exit; fi
+    # invalid option
+    echo "$1" | grep -vc '^[-]' >/dev/null
+    if [ $? -ne 0 ]; then 
+        echo "\e[1;91mOption '$1' is not correct for this script, use --help option for info\e[0;39m" 
+        exit
+    fi
+
 done
+
+printf "\n"

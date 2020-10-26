@@ -56,10 +56,14 @@ void BSTInit (tBSTNodePtr *RootPtr) {
 ** Ten bude použit i ve funkcích BSTDelete, BSTInsert a BSTDispose.
 **/
 
-	
+	if (*RootPtr == NULL) return;
 
-	 solved = FALSE;		  /* V případě řešení smažte tento řádek! */
+	(*RootPtr)->Key = 0;
+	(*RootPtr)->BSTNodeCont = 0;
+	(*RootPtr)->LPtr = NULL;
+	(*RootPtr)->RPtr = NULL;
 
+	return;
 }
 
 int BSTSearch (tBSTNodePtr RootPtr, char K, int *Content)	{
@@ -77,10 +81,18 @@ int BSTSearch (tBSTNodePtr RootPtr, char K, int *Content)	{
 ** pomocnou funkci.
 **/
 
+	if (RootPtr == NULL) return FALSE;
 	
+	if (RootPtr->Key == K) {
+		*Content = RootPtr->BSTNodeCont;
+		return TRUE;
+	}
 
-	 solved = FALSE;		  /* V případě řešení smažte tento řádek! */
+	//check if i can find with compare K
+	if (RootPtr->LPtr != NULL && BSTSearch(RootPtr->LPtr, K, Content)) return TRUE;
+	if (RootPtr->RPtr != NULL && BSTSearch(RootPtr->RPtr, K, Content)) return TRUE;
 
+	return FALSE;
 }
 
 
@@ -101,10 +113,28 @@ void BSTInsert (tBSTNodePtr* RootPtr, char K, int Content)	{
 ** příklad, na kterém si chceme ukázat eleganci rekurzivního zápisu.
 **/
 
-	
+	if (*RootPtr == NULL) {
+		
+		*RootPtr = malloc(sizeof(struct tBSTNode));
+		if (*RootPtr == NULL) return;
 
-	 solved = FALSE;		  /* V případě řešení smažte tento řádek! */
+		(*RootPtr)->Key = K;
+		(*RootPtr)->BSTNodeCont = Content;
+		(*RootPtr)->LPtr = NULL;
+		(*RootPtr)->RPtr = NULL;
 
+		return;
+	}
+
+	if (K < (*RootPtr)->Key) {
+		BSTInsert(&(*RootPtr)->LPtr, K, Content);
+	} else if (K > (*RootPtr)->Key) {
+		BSTInsert(&(*RootPtr)->RPtr, K, Content);
+	} else {
+		(*RootPtr)->BSTNodeCont = Content;	
+	}
+
+	return;
 }
 
 void ReplaceByRightmost (tBSTNodePtr PtrReplaced, tBSTNodePtr *RootPtr) {
@@ -154,10 +184,15 @@ void BSTDispose (tBSTNodePtr *RootPtr) {
 ** funkce.
 **/
 	
+	if (*RootPtr == NULL) return;
 
-	 solved = FALSE;		  /* V případě řešení smažte tento řádek! */
+	if ((*RootPtr)->LPtr != NULL) BSTDispose(&(*RootPtr)->LPtr);
+	if ((*RootPtr)->RPtr != NULL) BSTDispose(&(*RootPtr)->RPtr);
 
+	free(*RootPtr);
+	*RootPtr = NULL;
+	
+	return;
 }
 
 /* konec c401.c */
-
