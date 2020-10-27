@@ -75,34 +75,34 @@ for FILE in $DIRS; do
 
         if [ "$SKIPTEST" -eq 1 ]; then
             echo "Output files: \e[1;93mskipped \e[0;39m"
-            cd ..
-            continue
         else 
             # create comparable file and compare for exit code
             ./"$FILE"-test >"$FILE"-my.output
-		    diff -su "$FILE"*.output >/dev/null 2>&1
+		    diff "$FILE"*.output >/dev/null 2>&1
         
             # exit code 0 - correct , X - print output
             if [ "$?" -eq 0 ]; then
                 echo "Output files: \e[1;92mok \e[0;39m"
             else 
-                diff -su "$FILE"*.output
+                diff -y "$FILE"*.output
             fi
-
-            cd ..
         fi
+        cd ..
 
         # exit if only 1 part should be tested
-        if [ "$FILE" = "$1" ]; then exit; fi
+        if [ "$FILE" = "$1" ]; then break; fi
         continue
     fi
 
     # invalid option
-    echo "$1" | grep -vc '^[-]' >/dev/null
+    echo "$1" | grep -v '^[-]' >/dev/null
     if [ $? -ne 0 ]; then 
         echo "\e[1;91mOption '$1' is not correct for this script, use --help option for info\e[0;39m" 
         exit
     fi
+
+    echo "$DIRS" | grep "$DIRARG" >/dev/null;
+    if [ $? -ne 0 ]; then echo "\e[1;91mDirectory '$DIRARG' does not exist\e[0;39m"; exit; fi
 
 done
 
