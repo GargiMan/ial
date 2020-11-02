@@ -24,6 +24,8 @@ Let's set HTSIZE to 19 ( must be prvocislo )
 18: (*UNDEF*,-1.00)
 ------------------------------------
 Items count 0   The longest list 0
+Smerodatna odchylka: 0.000000
+------------------------------------
 
 [TEST01] Table initialization
 ------------HASH TABLE--------------
@@ -48,6 +50,8 @@ Items count 0   The longest list 0
 18:
 ------------------------------------
 Items count 0   The longest list 0
+Smerodatna odchylka: 0.000000
+------------------------------------
 
 [TEST02] Search for non-existing item
 NULL
@@ -75,6 +79,8 @@ NULL
 18:
 ------------------------------------
 Items count 1   The longest list 1
+Smerodatna odchylka: 0.707107
+------------------------------------
 
 [TEST04] Search for existing item
 rohlik - 1.50
@@ -102,6 +108,8 @@ rohlik - 1.50
 18: (sul,10.00) (fernet,95.00) (starobrno,16.50)
 ------------------------------------
 Items count 24   The longest list 4
+Smerodatna odchylka: 1.063219
+------------------------------------
 
 [TEST06] htSearch for "kecup"
 kecup - 28.90
@@ -133,6 +141,8 @@ NULL
 18: (sul,10.00) (fernet,95.00) (starobrno,16.50)
 ------------------------------------
 Items count 24   The longest list 4
+Smerodatna odchylka: 1.063219
+------------------------------------
 
 [TEST09] How much is the fish?
 99.90
@@ -169,6 +179,8 @@ NULL
 18: (sul,10.00) (fernet,95.00) (starobrno,16.50)
 ------------------------------------
 Items count 24   The longest list 4
+Smerodatna odchylka: 1.063219
+------------------------------------
 
 [TEST14] How much is the fish?
 105.50
@@ -196,6 +208,8 @@ Items count 24   The longest list 4
 18: (sul,10.00) (fernet,95.00) (starobrno,16.50)
 ------------------------------------
 Items count 23   The longest list 4
+Smerodatna odchylka: 1.044466
+------------------------------------
 
 [TEST16] How much is the fish?
 NULL
@@ -223,6 +237,8 @@ NULL
 18: (sul,10.00) (fernet,95.00)
 ------------------------------------
 Items count 16   The longest list 3
+Smerodatna odchylka: 0.730297
+------------------------------------
 
 [TEST18] Let's delete whole table
 ------------HASH TABLE--------------
@@ -247,6 +263,8 @@ Items count 16   The longest list 3
 18:
 ------------------------------------
 Items count 0   The longest list 0
+Smerodatna odchylka: 0.000000
+------------------------------------
 
 [TEST19] And try delete in empty table
 ------------HASH TABLE--------------
@@ -271,6 +289,8 @@ Items count 0   The longest list 0
 18:
 ------------------------------------
 Items count 0   The longest list 0
+Smerodatna odchylka: 0.000000
+------------------------------------
 
 [TEST20] htSearch for "kecup" in empty table
 NULL
@@ -296,3 +316,5 @@ NULL
 18:
 ------------------------------------
 Items count 0   The longest list 0
+Smerodatna odchylka: 0.000000
+------------------------------------

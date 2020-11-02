@@ -1,15 +1,16 @@
 /* ******************** s016-advanced-test.c *********************** */
-/*  predmet: Algoritmy (IAL) - FIT VUT Brno                          */
-/*  úkol: c202 - Tabulka s rozptýlenými polo¾kami                    */
-/*  vytvoøil: Václav Topinka                                         */
-/*  datum: záøí 2005                                                 */
+/*  předmět: Algoritmy (IAL) - FIT VUT Brno                          */
+/*  úkol: c202 - Tabulka s rozptýlenými položkami                    */
+/*  vytvořil: Václav Topinka                                         */
+/*  datum: září 2005                                                 */
+/*  modifikace: 2013 Karel Masarik                                   */
 /*  kódování: iso-8859-2                                             */
 /* ***************************************************************** */
 
-/* Testy pro domácí úkol na téma zásobník znakù (c202.c).
+/* Testy pro domácí úkol na téma zásobník znaků (c202.c).
 Obsahuje procedury a funkce, které testují studentské verze jejich voláním.
-Toto je roz¹íøená verze, obsahující komplexní testování.
-Slou¾í pro lektory ke kontrole pøíslu¹né domácí úlohy. */
+Toto je rozšířená verze, obsahující komplexní testování.
+Slouží pro lektory ke kontrole příslušné domácí úlohy. */
 
 #include "c016.h"
 
@@ -43,7 +44,7 @@ void htPrintTable( tHTable* ptrht ) {
 	int sumcnt = 0;
 	int sumcnt2 = 0;
 	int n = 0;
-	
+
 	printf ("------------HASH TABLE--------------\n");
 	for ( int i=0; i<HTSIZE; i++ ) {
 		printf ("%i:",i);
@@ -56,19 +57,20 @@ void htPrintTable( tHTable* ptrht ) {
 			ptr = ptr->ptrnext;
 		}
 		printf ("\n");
-	
+
 		if (cnt > maxlen)
 			maxlen = cnt;
 		n += cnt;
 		sumcnt += cnt;
 		sumcnt2 += cnt*cnt;
 	}
-	
+
 	printf ("------------------------------------\n");
 	printf ("Items count %i   The longest list %i\n",sumcnt,maxlen);
 	if ( n < 2 )
 		n = 2;
-	
+	printf ("Smerodatna odchylka: %f\n",sqrt((sumcnt2-((float)(sumcnt*sumcnt)/n))/(n-1)));
+	printf ("------------------------------------\n");
 }
 
 /* vola funkci htInit a v pripade ze neni resena tiskne chybu */
@@ -86,7 +88,7 @@ void use_search( tHTable* ptrht, tKey key ) {
 	tHTItem* ptritem = htSearch ( ptrht, key );
 	if ( ! solved )
 		printf("[W] Funkce HTSearch nebyla implementovana...\n");
-	else 
+	else
 		htPrintItem ( ptritem );
 }
 
@@ -105,7 +107,7 @@ void use_read( tHTable* ptrht, tKey key ) {
 	tData* ptrdata = htRead ( ptrht, key );
 	if ( ! solved )
 		printf("[W] Funkce HTSearch nebyla implementovana...\n");
-	else 
+	else
 		htPrintData ( ptrdata );
 }
 
