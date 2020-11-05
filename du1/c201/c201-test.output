@@ -285,7 +285,7 @@ DeleteFirst při prázdném seznamu => nic
 -----------------
 
 [TEST26]
-Test PostDelete při prázdném seznamu => nic
+Test PostDelete při prázdném seznamu => nic 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 -----------------
 -----------------

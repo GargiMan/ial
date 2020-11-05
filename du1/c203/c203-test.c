@@ -1,31 +1,9 @@
+/**/
 /****************************** c203-test.c ************************************
  * Předmět: Algoritmy (IAL) - FIT VUT v Brně
- * Základní testy pro příklad c203.c (Fronta znaků v poli)
+ * Pokročilé testy pro příklad c203.c (Fronta znaků v poli)
  * Vytvořil: Václav Topinka, září 2005
- * Upravil: Bohuslav Křena, září 2012
- *******************************************************************************
- * V tomto příkladu jsme použili trochu více angličtinu než obvykle.
- * Máme pro to dva důvody:
- *  
- * 1) Angličtina je druhá mateřština informatika! Bez ní se jako informatici
- * (a v dnešní době nejenom jako informatici) asi jenom těžko obejdete.
- * Domácí úlohy (alespoň z části) v angličtině by vám proto mohli pomoci při
- * zažití tohoto jazyka. Pojmenovávat identifikátory anglickými termíny je
- * velice dobrý zvyk - nikdy nevíte, zda Váš kód nebude později číst nebo
- * dokonce upravovat někdo, kdo česky nerozumí. Stejně tak je užitečné psát
- * anglictky i komentáře.
- *  
- * 2) Na FIT přijíždějí zahraniční studenti v rámci projektů ERASMUS/SOCRATES
- * Aby se podmínky jejich studia co nejvíce blížily podmínkám, které mají
- * studenti studující v češtině, měli by zahraniční studenti dělat i stejné
- * domácí úlohy. Jenže to vyžaduje mít domácí úlohy připraveny v angličtině.
- * A udržovat konzistenci dvou verzí domácích úloh (českých a anglických) 
- * je značně pracné. Převedení domácích úloh do angličtiny by tento problém
- * elegatně vyřešilo.
- * 
- * Samotné zadání nakonec zůstalo i pro tento příklad v češtině, aby se nikdo
- * nemohl cítit poškozen tím, že zadání nerozuměl právě kvůli použití
- * nemateřského jazyka.
+ * Upravil: Bohuslav Křena, listopad 2009
  ******************************************************************************/
 
 #include "c203.h"
@@ -106,11 +84,13 @@ void use_queue_front ( tQueue* q ) {
 	solved = 1;
 	err_flag = 0;
 	char c;
-	queueFront( q, &c );
+  queueFront( q, &c );
 	if ( ! solved )
 		printf("Function queueFront has not been implemented.\n");
 	else if ( !err_flag )
 		printf("Function queueFront returned value '%c'.\n", c );
+	else
+		printf("Function queueFront returned value '%d'.\n", c );
 }
 
 void use_queue_remove ( tQueue* q ) {
@@ -124,11 +104,14 @@ void use_queue_get ( tQueue* q ) {
 	solved = 1;
 	err_flag = 0;
 	char c;
-	queueGet( q, &c );
+  queueGet( q, &c );
 	if ( ! solved )
 		printf("Function queueGet has not been implemented.\n");
 	else if ( !err_flag )
 		printf("Function queueGet returned value '%c'.\n", c );
+	else
+		printf("Function queueGet returned value '%d'.\n", c );
+			
 }
 
 void use_queue_up ( tQueue* q, char c ) {
@@ -143,7 +126,7 @@ void use_queue_up ( tQueue* q, char c ) {
  * ADVANCED TESTS
  ******************************************************************************/
 
-int main ( int argc, char* argv[] ) {
+int main () {
 
 	printf ("**************************************************\n");
 	printf ("* C203: Queue implemented using an array         *\n");
@@ -167,7 +150,7 @@ int main ( int argc, char* argv[] ) {
 
 	printf ("\n[TEST01] queue initialization\n");
 	printf ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" );
-    use_queue_init( queue );
+  use_queue_init( queue );
 	queuePrint( queue );
 
 	printf ("\n[TEST02] We try queueEmpty and queueFull over the empty queue.\n");
@@ -186,7 +169,7 @@ int main ( int argc, char* argv[] ) {
 	printf ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" );
 	use_queue_empty( queue );
 	use_queue_full( queue );
-
+	
 	printf ("\n[TEST05] We put 'Ciao!' into the queue using queueUp.\n");
 	printf ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" );
 	use_queue_up( queue, 'C' );
@@ -200,19 +183,19 @@ int main ( int argc, char* argv[] ) {
 	printf ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" );
 	use_queue_empty( queue );
 	use_queue_full( queue );
-
+	
 	printf ("\n[TEST07] Function queueFront should always return the same value.\n");
 	printf ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" );
 	use_queue_front( queue );
 	use_queue_front( queue );
 	queuePrint( queue );
-
+	
 	printf ("\n[TEST08] Let's examine the difference between queueRemove and queueGet.\n" );
 	printf ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" );
 	use_queue_remove( queue );
 	use_queue_get( queue );
 	queuePrint( queue );
-
+	
 	printf ("\n[TEST09] After three queueGet the queue should be empty.\n");
 	printf ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" );
 	use_queue_get( queue );
@@ -231,7 +214,7 @@ int main ( int argc, char* argv[] ) {
 	use_queue_empty( queue );
 	use_queue_full( queue );
 	queuePrint( queue );
-
+	
 	printf ("\n[TEST11] After removing three elements using queueGet, the queue should be empty.\n");
 	printf ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" );
 	use_queue_get( queue );
@@ -284,7 +267,7 @@ int main ( int argc, char* argv[] ) {
 	queuePrint( queue );
 	use_queue_empty( queue );
 	use_queue_full( queue );
-
+	
 	printf ("\n[TEST17] We create the queue of the size 2.\n");
 	printf ("===========================================\n");
 	QUEUE_SIZE = 3;
@@ -342,7 +325,7 @@ int main ( int argc, char* argv[] ) {
 	use_queue_get ( queue );
 	use_queue_remove ( queue );
 	queuePrint( queue );
-
+	
 	use_queue_up ( queue, '1' );
 	use_queue_empty ( queue );
 	use_queue_full ( queue );

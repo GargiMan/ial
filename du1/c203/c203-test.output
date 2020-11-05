@@ -25,7 +25,9 @@ Fucntion queueFull returned 'FALSE'.
 [TEST03] queueFront, queueGet, and queueRemove should cause handled errors.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Queue error: FRONT
+Function queueFront returned value '0'.
 Queue error: GET
+Function queueGet returned value '0'.
 Queue error: REMOVE
 
 *********
@@ -94,6 +96,7 @@ Function queueGet returned value '1'.
 Function queueGet returned value '2'.
 Function queueGet returned value '3'.
 Queue error: FRONT
+Function queueFront returned value '0'.
 Function queueEmpty returned 'TRUE'.
 Fucntion queueFull returned 'FALSE'.
 
@@ -115,6 +118,7 @@ B       F
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Function queueGet returned value '4'.
 Queue error: FRONT
+Function queueFront returned value '0'.
 Function queueEmpty returned 'TRUE'.
 Fucntion queueFull returned 'FALSE'.
 
@@ -164,7 +168,9 @@ E
 Function queueEmpty returned 'TRUE'.
 Fucntion queueFull returned 'FALSE'.
 Queue error: FRONT
+Function queueFront returned value '0'.
 Queue error: GET
+Function queueGet returned value '0'.
 Queue error: REMOVE
 
 ***
@@ -186,9 +192,11 @@ Function queueGet returned value '1'.
 [TEST20] Calling queueRemove followed by queueGet should cause error.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Queue error: GET
+Function queueGet returned value '0'.
 Function queueEmpty returned 'TRUE'.
 Fucntion queueFull returned 'FALSE'.
 Queue error: FRONT
+Function queueFront returned value '0'.
 
 12*
   ^
@@ -201,6 +209,7 @@ Function queueGet returned value '4'.
 Function queueEmpty returned 'TRUE'.
 Fucntion queueFull returned 'FALSE'.
 Queue error: FRONT
+Function queueFront returned value '0'.
 
 423
  ^ 
@@ -215,7 +224,9 @@ E
 Function queueEmpty returned 'TRUE'.
 Fucntion queueFull returned 'TRUE'.
 Queue error: FRONT
+Function queueFront returned value '0'.
 Queue error: GET
+Function queueGet returned value '0'.
 Queue error: REMOVE
 
 *
@@ -225,7 +236,9 @@ Queue error: UP
 Function queueEmpty returned 'TRUE'.
 Fucntion queueFull returned 'TRUE'.
 Queue error: FRONT
+Function queueFront returned value '0'.
 Queue error: GET
+Function queueGet returned value '0'.
 Queue error: REMOVE
 
 *
@@ -234,5 +247,6 @@ E
 Function queueEmpty returned 'TRUE'.
 Fucntion queueFull returned 'TRUE'.
 Queue error: FRONT
+Function queueFront returned value '0'.
 
 ******* The end of Advanced Tests (c203-advanced-test.c) *******

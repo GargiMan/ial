@@ -1,519 +1,679 @@
-Dvousměrně vázaný lineární seznam
-=================================
+Double Linked List - Advanced Tests
+===================================
 
 [TEST01]
-Inicializace seznamu
-~~~~~~~~~~~~~~~~~~~~
+List initialization
+~~~~~~~~~~~~~~~~~~~
 -----------------
 -----------------
 
 [TEST02]
-Pokus o volání DLCopyFirst na prázdný seznam => chyba
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Calling DLCopyFirst for empty list should cause en error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *ERROR* The program has performed an illegal operation.
-Operace DLCopyFirst volala funkci DLError.
+Function DLCopyFirst has called function DLError.
 
 [TEST03]
-Pokus o volání DLCopyLast na prázdný seznam => chyba
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Calling DLCopyLast for empty list should cause en error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *ERROR* The program has performed an illegal operation.
-Operace DLCopyLast volala funkci DLError.
+Function DLCopyLast has called function DLError.
 
 [TEST04]
-Zavoláme 2x operaci DLInsertFirst a 2x operaci DLInsertLast.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	1
------------------
------------------
- 	2
- 	1
------------------
------------------
- 	2
- 	1
- 	3
------------------
------------------
- 	2
- 	1
- 	3
- 	4
------------------
+Calling DLCopy for empty list should cause en error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*ERROR* The program has performed an illegal operation.
+Function DLCopy has called function DLError.
 
 [TEST05]
-Seznam by měl být neaktivní -- ověříme si to voláním DLActive.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Operace DLActive vrací hodnotu false.
+Calling DLFirst for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
 
 [TEST06]
-Otestujeme funkci DLFirst při neaktivním seznamu a funkci DLActive.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	2	 <= toto je aktivní prvek 
- 	1
- 	3
- 	4
------------------
-Operace DLActive vrací hodnotu true.
-
-[TEST07]
-Otestujeme funkci DLLast.
-~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	2
- 	1
- 	3
- 	4	 <= toto je aktivní prvek 
------------------
-Operace DLActive vrací hodnotu true.
-
-[TEST08]
-Test funkce DLCopy při aktivitě na posledním prvku
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Operace DLCopy vrací obsah 4.
-
-[TEST09]
-Test funkce DLPred -- voláme 3x, aktivita zůstane na prvním prvku.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	2
- 	1
- 	3	 <= toto je aktivní prvek 
- 	4
------------------
------------------
- 	2
- 	1	 <= toto je aktivní prvek 
- 	3
- 	4
------------------
------------------
- 	2	 <= toto je aktivní prvek 
- 	1
- 	3
- 	4
------------------
-Operace DLActive vrací hodnotu true.
-
-[TEST10]
-Aktualizujeme obsah aktivního prvku.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	5	 <= toto je aktivní prvek 
- 	1
- 	3
- 	4
------------------
-Operace DLActive vrací hodnotu true.
-Operace DLCopy vrací obsah 5.
-
-[TEST11]
-Provedeme ještě jednou DLPred -- aktivita se ztratí.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	5
- 	1
- 	3
- 	4
------------------
-Operace DLActive vrací hodnotu false.
-
-[TEST12]
-Nastavíme aktivitu na konec a pak ji zrušíme operací DLSucc.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	5
- 	1
- 	3
- 	4	 <= toto je aktivní prvek 
------------------
------------------
- 	5
- 	1
- 	3
- 	4
------------------
-Operace DLActive vrací hodnotu false.
-
-[TEST13]
-Pokusíme se o aktualizaci při neaktivním seznamu => nic 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	5
- 	1
- 	3
- 	4
------------------
-Operace DLActive vrací hodnotu false.
-
-[TEST14]
-Pokus o DLCopy při neaktivním seznamu => ošetřená chyba.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*ERROR* The program has performed an illegal operation.
-Operace DLCopy volala funkci DLError.
-
-[TEST15]
-DLSucc při neaktivním seznamu nesmí zhavarovat.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	5
- 	1
- 	3
- 	4
------------------
-Operace DLActive vrací hodnotu false.
-
-[TEST16]
-DLPred při neaktivním seznamu nesmí zhavarovat.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	5
- 	1
- 	3
- 	4
------------------
-Operace DLActive vrací hodnotu false.
-
-[TEST17]
-Použití operace DLCopyFirst při neaktivním seznamu
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Operace DLCopyFirst vrací obsah 5.
-
-[TEST18]
-Použití operace DLCopyLast při neaktivním seznamu
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Operace DLCopyLast vrací obsah 4.
-
-[TEST19]
-Použití operace DLDeleteFirst při neaktivním seznamu
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	1
- 	3
- 	4
------------------
-Operace DLActive vrací hodnotu false.
-
-[TEST20]
-Použití operace DLDeleteLast při neaktivním seznamu
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	1
- 	3
------------------
-Operace DLActive vrací hodnotu false.
-
-[TEST21]
-Operace DLFirst nastaví aktivitu na první prvek.
+Calling DLLast for empty list should do nothing.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
- 	1	 <= toto je aktivní prvek 
- 	3
 -----------------
-Operace DLActive vrací hodnotu true.
+
+[TEST07]
+Calling DLDeleteFirst for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST08]
+Calling DLDeleteLast for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST09]
+Calling DLPostDelete for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST10]
+Calling DLPreDelete for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST11]
+Calling DLPostInsert for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST12]
+Calling DLPreInsert for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST13]
+Calling DLActualize for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST14]
+Calling DLSucc for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST15]
+Calling DLPred for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST16]
+Function DLActive for empty list should return FALSE.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLActive is FALSE.
+
+[TEST17]
+Calling DLDisposeList for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST18]
+3x DLInsertFirst
+~~~~~~~~~~~~~~~~
+-----------------
+ 	4
+-----------------
+-----------------
+ 	5
+ 	4
+-----------------
+-----------------
+ 	6
+ 	5
+ 	4
+-----------------
+
+[TEST19]
+The list should not be active now.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLActive is FALSE.
+
+[TEST20]
+We start at the begin of the list and go to the end.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	6	 <= activity 
+ 	5
+ 	4
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	6
+ 	5	 <= activity 
+ 	4
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	6
+ 	5
+ 	4	 <= activity 
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	6
+ 	5
+ 	4
+-----------------
+Return value of function DLActive is FALSE.
+
+[TEST21]
+We start at the end of the list and go to its begin.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	6
+ 	5
+ 	4	 <= activity 
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	6
+ 	5	 <= activity 
+ 	4
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	6	 <= activity 
+ 	5
+ 	4
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	6
+ 	5
+ 	4
+-----------------
+Return value of function DLActive is FALSE.
 
 [TEST22]
-DLDeleteFirst aktivního prvku povede ke ztrátě aktivity.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+We read and destroy the list by DLCopylast and DLDeleteLast functions.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLCopyLast is 4.
 -----------------
- 	3
+ 	6
+ 	5
 -----------------
-Operace DLActive vrací hodnotu false.
+Return value of function DLActive is FALSE.
+-----------------
+ 	6	 <= activity 
+ 	5
+-----------------
+Return value of function DLCopyLast is 5.
+-----------------
+ 	6	 <= activity 
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	6	 <= activity 
+-----------------
+Return value of function DLCopyLast is 6.
+-----------------
+-----------------
+Return value of function DLActive is FALSE.
 
 [TEST23]
-Operace DLLast nastaví aktivitu na poslední prvek.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3x DLInsertLast
+~~~~~~~~~~~~~~~
 -----------------
- 	3	 <= toto je aktivní prvek 
+ 	7
 -----------------
-Operace DLActive vrací hodnotu true.
+-----------------
+ 	7
+ 	8
+-----------------
+-----------------
+ 	7
+ 	8
+ 	9
+-----------------
 
 [TEST24]
-Operace DLFirst při jediném prvku => aktivita zůstává.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	3	 <= toto je aktivní prvek 
------------------
-Operace DLActive vrací hodnotu true.
+The list should not be active now.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLActive is FALSE.
 
 [TEST25]
-DLDeleteLast aktivního prvku povede ke ztrátě aktivity.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+We start at the begin of the list and go to the end.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
+ 	7	 <= activity 
+ 	8
+ 	9
 -----------------
-Operace DLActive vrací hodnotu false.
+Return value of function DLActive is TRUE.
+-----------------
+ 	7
+ 	8	 <= activity 
+ 	9
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	7
+ 	8
+ 	9	 <= activity 
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	7
+ 	8
+ 	9
+-----------------
+Return value of function DLActive is FALSE.
 
 [TEST26]
-Voláme 2x operaci DLInsertLast a 1x operaci DLInsertFirst.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	7
------------------
+We start at the end of the list and go to its begin.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
  	7
  	8
+ 	9	 <= activity 
 -----------------
+Return value of function DLActive is TRUE.
 -----------------
+ 	7
+ 	8	 <= activity 
  	9
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	7	 <= activity 
+ 	8
+ 	9
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
  	7
  	8
+ 	9
 -----------------
+Return value of function DLActive is FALSE.
 
 [TEST27]
-Seznam je neaktivní -- ověříme si to voláním DLActive.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Operace DLActive vrací hodnotu false.
+We read and destroy the list by DLCopyFirst and DLDeleteFirst functions.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLCopyFirst is 7.
+-----------------
+ 	8
+ 	9
+-----------------
+Return value of function DLActive is FALSE.
+-----------------
+ 	8	 <= activity 
+ 	9
+-----------------
+Return value of function DLCopyFirst is 8.
+-----------------
+ 	9
+-----------------
+Return value of function DLActive is FALSE.
+-----------------
+ 	9	 <= activity 
+-----------------
+Return value of function DLCopyFirst is 9.
+-----------------
+-----------------
+Return value of function DLActive is FALSE.
 
 [TEST28]
-Užitím operace DLLast nastavíme aktivitu na konec seznamu.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+We start with one element in inactive list. Nothing should happen.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLActive is FALSE.
 -----------------
- 	9
- 	7
- 	8	 <= toto je aktivní prvek 
+ 	10
 -----------------
-Operace DLActive vrací hodnotu true.
+-----------------
+ 	10
+-----------------
+-----------------
+ 	10
+-----------------
+-----------------
+ 	10
+-----------------
+-----------------
+ 	10
+-----------------
+-----------------
+ 	10
+-----------------
+-----------------
+ 	10
+-----------------
+-----------------
+ 	10
+-----------------
+Return value of function DLActive is FALSE.
 
 [TEST29]
-Operace DLPostDelete při aktivitě na posledním prvku nedělá nic.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	9
- 	7
- 	8	 <= toto je aktivní prvek 
------------------
-Operace DLActive vrací hodnotu true.
+Function DLCopy for inactive list should cause an error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLActive is FALSE.
+*ERROR* The program has performed an illegal operation.
+Function DLCopy has called function DLError.
+Return value of function DLActive is FALSE.
 
 [TEST30]
-Nastavíme aktivitu na předposlední prvek operací DLPred a opět
-zavoláme DLPostDelete. Smažeme tím poslední prvek v seznamu.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+We continue with additional element in inactive list. Again, nothing should happen.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLActive is FALSE.
 -----------------
- 	9
- 	7	 <= toto je aktivní prvek 
- 	8
+ 	14
+ 	10
 -----------------
 -----------------
- 	9
- 	7	 <= toto je aktivní prvek 
+ 	14
+ 	10
 -----------------
-Operace DLActive vrací hodnotu true.
+-----------------
+ 	14
+ 	10
+-----------------
+-----------------
+ 	14
+ 	10
+-----------------
+-----------------
+ 	14
+ 	10
+-----------------
+-----------------
+ 	14
+ 	10
+-----------------
+-----------------
+ 	14
+ 	10
+-----------------
+-----------------
+ 	14
+ 	10
+-----------------
+Return value of function DLActive is FALSE.
 
 [TEST31]
-Užitím operace DLFirst nastavíme aktivitu na začátek seznamu.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	9	 <= toto je aktivní prvek 
- 	7
------------------
-Operace DLActive vrací hodnotu true.
+Function DLCopy for inactive list should cause an error again.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLActive is FALSE.
+*ERROR* The program has performed an illegal operation.
+Function DLCopy has called function DLError.
+Return value of function DLActive is FALSE.
 
 [TEST32]
-Operace DLPreDelete při aktivitě na prvním prvku nedělá nic.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+We change values of elements from the begin.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
- 	9	 <= toto je aktivní prvek 
- 	7
+ 	14	 <= activity 
+ 	10
 -----------------
-Operace DLActive vrací hodnotu true.
+-----------------
+ 	18	 <= activity 
+ 	10
+-----------------
+-----------------
+ 	18
+ 	10	 <= activity 
+-----------------
+-----------------
+ 	18
+ 	19	 <= activity 
+-----------------
+Return value of function DLActive is TRUE.
 
 [TEST33]
-Nastavíme aktivitu na druhý prvek operací DLSucc a opět
-zavoláme DLPreDelete. Smaže první prvek v seznamu.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+We change values of elements from the end.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
- 	9
- 	7	 <= toto je aktivní prvek 
+ 	18
+ 	19	 <= activity 
 -----------------
 -----------------
- 	7	 <= toto je aktivní prvek 
+ 	18
+ 	20	 <= activity 
 -----------------
-Operace DLActive vrací hodnotu true.
+-----------------
+ 	18	 <= activity 
+ 	20
+-----------------
+-----------------
+ 	21	 <= activity 
+ 	20
+-----------------
+Return value of function DLActive is TRUE.
 
 [TEST34]
-Otestujeme DLInsertFirst při seznamu s jediným prvkem, nastavíme
-aktivitu na nově vložený prvek a opět posuneme aktivitu na konec 
-seznamu.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Function DLDeleteFirst can cause loss of activity.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
- 	10
- 	7	 <= toto je aktivní prvek 
+ 	21	 <= activity 
+ 	20
+ 	22
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	21	 <= activity 
+ 	20
+ 	22
 -----------------
 -----------------
- 	10	 <= toto je aktivní prvek 
- 	7
+ 	20
+ 	22
 -----------------
------------------
- 	10
- 	7	 <= toto je aktivní prvek 
------------------
-Operace DLActive vrací hodnotu true.
+Return value of function DLActive is FALSE.
 
 [TEST35]
-Operací DLPostInsert vložíme nový prvek za poslední prvek seznamu.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Function DLDeleteLast can cause loss of activity.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
- 	10
- 	7	 <= toto je aktivní prvek 
- 	11
+ 	23
+ 	20
+ 	22
 -----------------
-Operace DLActive vrací hodnotu true.
+Return value of function DLActive is FALSE.
+-----------------
+ 	23
+ 	20
+ 	22	 <= activity 
+-----------------
+-----------------
+ 	23
+ 	20
+-----------------
+Return value of function DLActive is FALSE.
 
 [TEST36]
-Nastavíme aktivitu na první prvek seznamu a vyzkoušíme DLPostInsert.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	10	 <= toto je aktivní prvek 
- 	7
- 	11
------------------
------------------
- 	10	 <= toto je aktivní prvek 
- 	12
- 	7
- 	11
------------------
-Operace DLActive vrací hodnotu true.
-
-[TEST37]
-Nastvíme aktivitu na druhý prvek a voláme 2x DLPostDelete a 1x DLPreDelete.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	10
- 	12	 <= toto je aktivní prvek 
- 	7
- 	11
------------------
------------------
- 	10
- 	12	 <= toto je aktivní prvek 
- 	11
------------------
------------------
- 	10
- 	12	 <= toto je aktivní prvek 
------------------
------------------
- 	12	 <= toto je aktivní prvek 
------------------
-Operace DLActive vrací hodnotu true.
-
-[TEST38]
-Otestujeme DLInsertLast při seznamu s jediným prvkem, nastavíme
-aktivitu na nově vložený prvek a posuneme aktivitu na začátek.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	12	 <= toto je aktivní prvek 
- 	13
------------------
------------------
- 	12
- 	13	 <= toto je aktivní prvek 
------------------
------------------
- 	12	 <= toto je aktivní prvek 
- 	13
------------------
-Operace DLActive vrací hodnotu true.
-
-[TEST39]
-Operací DLPreInsert vkládáme nový prvek před první prvek seznamu.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	14
- 	12	 <= toto je aktivní prvek 
- 	13
------------------
-Operace DLActive vrací hodnotu true.
-
-[TEST40]
-Nastavíme aktivitu na poslední prvek seznamu a aplikujeme DLPreInsert.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
- 	14
- 	12
- 	13	 <= toto je aktivní prvek 
------------------
------------------
- 	14
- 	12
- 	15
- 	13	 <= toto je aktivní prvek 
------------------
-Operace DLActive vrací hodnotu true.
-
-[TEST41]
-Otestujeme funkčnost operace DLDisposeList.
+Function DLPreDelete deletes first element.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
+ 	24
+ 	23
+ 	20
 -----------------
+-----------------
+ 	24	 <= activity 
+ 	23
+ 	20
+-----------------
+-----------------
+ 	24
+ 	23	 <= activity 
+ 	20
+-----------------
+-----------------
+ 	23	 <= activity 
+ 	20
+-----------------
+Return value of function DLCopyFirst is 23.
 
-Následuje testování operací při prázdném seznamu
-================================================
+[TEST37]
+Function DLPostDelete deletes last element.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	23	 <= activity 
+ 	20
+ 	25
+-----------------
+-----------------
+ 	23
+ 	20
+ 	25	 <= activity 
+-----------------
+-----------------
+ 	23
+ 	20	 <= activity 
+ 	25
+-----------------
+-----------------
+ 	23
+ 	20	 <= activity 
+-----------------
+Return value of function DLCopyLast is 20.
 
-[TEST42]
-DLFirst a DLLast při prázdném seznamu nedělají nic.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[TEST38]
+Function DLPreDelete at the begin of the list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	23	 <= activity 
+ 	20
 -----------------
 -----------------
+ 	23	 <= activity 
+ 	20
 -----------------
------------------
-Operace DLActive vrací hodnotu false.
+Return value of function DLActive is TRUE.
 
-[TEST43]
-DLCopyFirst i DLCopyLast způsobí ošetřenou chybu.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*ERROR* The program has performed an illegal operation.
-Operace DLCopyFirst volala funkci DLError.
-*ERROR* The program has performed an illegal operation.
-Operace DLCopyLast volala funkci DLError.
+[TEST39]
+We add a new element at the begin by DLPreInsert.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	26
+ 	23	 <= activity 
+ 	20
+-----------------
+Return value of function DLCopyFirst is 26.
+Return value of function DLCopy is 23.
+Return value of function DLActive is TRUE.
 
-[TEST44]
-DLDeleteFirst a DLDeleteLast při prázdném seznamu nedělají nic.
+[TEST40]
+Function DLPostDelete at the end of the list should do nothing.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
+ 	26
+ 	23
+ 	20	 <= activity 
 -----------------
 -----------------
+ 	26
+ 	23
+ 	20	 <= activity 
 -----------------
+Return value of function DLActive is TRUE.
+
+[TEST41]
+We add a new element at the end by DLPostInsert.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	26
+ 	23
+ 	20	 <= activity 
+ 	27
+-----------------
+Return value of function DLCopyLast is 27.
+Return value of function DLCopy is 20.
+Return value of function DLActive is TRUE.
+
+[TEST42]
+We dispose the list.
+~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST43]
+Twice.
+~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST44]
+Calling DLCopyFirst for empty list should cause en error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*ERROR* The program has performed an illegal operation.
+Function DLCopyFirst has called function DLError.
 
 [TEST45]
-DLPostDelete a DLPreDelete při prázdném seznamu nic nedělají.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
------------------
------------------
------------------
+Calling DLCopyLast for empty list should cause en error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*ERROR* The program has performed an illegal operation.
+Function DLCopyLast has called function DLError.
 
 [TEST46]
-DLPostInsert i DLPreInsert při prázdném seznamu nic nedělají.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
------------------
------------------
------------------
+Calling DLCopy for empty list should cause en error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*ERROR* The program has performed an illegal operation.
+Function DLCopy has called function DLError.
 
 [TEST47]
-Pokus o DLCopy na prázdný seznam => chyba
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*ERROR* The program has performed an illegal operation.
-Operace DLCopy volala funkci DLError.
+Calling DLFirst for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
 
 [TEST48]
-DLActualize při prázdném seznamu nic neudělá.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Calling DLLast for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
 -----------------
 
 [TEST49]
-DLSucc a DLPred na prázdný seznam nemají vliv.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------
------------------
------------------
------------------
-Operace DLActive vrací hodnotu false.
+Calling DLDeleteFirst for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
 -----------------
 
------------------------ konec příkladu c206----------------------
+[TEST50]
+Calling DLDeleteLast for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST51]
+Calling DLPostDelete for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST52]
+Calling DLPreDelete for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST53]
+Calling DLPostInsert for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST54]
+Calling DLPreInsert for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST55]
+Calling DLActualize for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST56]
+Calling DLSucc for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST57]
+Calling DLPred for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST58]
+Function DLActive for empty list should return FALSE.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLActive is FALSE.
+
+----------------------- End of advanced test for c206 ----------------------

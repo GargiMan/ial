@@ -147,7 +147,8 @@ void queueFront (const tQueue* q, char* c) {
 */
 
 	//kontrola
-	if (q == NULL) return;
+	if (c == NULL || q == NULL) return;
+	*c = 0;
 	if (queueEmpty(q)) {
 		queueError(QERR_FRONT);
 		return;
@@ -190,7 +191,8 @@ void queueGet (tQueue* q, char* c) {
 */
 
 	//kontrola
-	if (q == NULL) return;
+	if (c == NULL || q == NULL) return;
+	*c = 0;
 	if (queueEmpty(q)) {
 		queueError(QERR_GET);
 		return;

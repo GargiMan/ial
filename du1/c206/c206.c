@@ -263,7 +263,7 @@ void DLDeleteFirst (tDLList *L) {
     //mazanie prvku
     tDLElemPtr temp = L->First->rptr;
     if (temp == NULL) {
-        L->First = NULL;
+        L->Last = NULL;
     } else {
         temp->lptr = NULL;
     }
