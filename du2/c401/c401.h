@@ -17,9 +17,9 @@ funkcích. Nemodifikovat! */
 */
 /* ***************************************************************** */
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -38,7 +38,7 @@ typedef struct tBSTNode {
 /* prototypy funkcí */
 
 void BSTInit   (tBSTNodePtr *);
-int BSTSearch  (tBSTNodePtr, char, int *);
+int  BSTSearch (tBSTNodePtr  , char, int *);
 void BSTInsert (tBSTNodePtr *, char, int);
 void BSTDelete (tBSTNodePtr *, char);
 void BSTDispose(tBSTNodePtr *);

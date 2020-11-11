@@ -15,16 +15,16 @@ typů, se kterými se pracuje v příslušných úlohách. Nemodifikovat! */
 */
 /* ***************************************************************** */
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<stdarg.h>
-#include<stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <stdbool.h>
 
 #define FALSE 0
 #define TRUE 1
 #define MAXSTACK 30                      /* maximální počet prvků v zásobníku */
 
-extern int solved; 			                  /* indikace, zda byla funkce řešena */
+extern int solved; 			              /* indikace, zda byla funkce řešena */
 
 typedef struct tBTNode	{                                      /* uzel stromu */
     int Cont;                                         /* užitečný obsah uzlu  */
