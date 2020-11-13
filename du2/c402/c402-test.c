@@ -213,22 +213,22 @@ int main(int argc, char *argv[])			{
 	test_BTInorder(TempTree);
 
 	printf("[TEST10]\n");
-	printf("Pokus o opetovne vlozeni prvku 8 (nesmi dojit ke zmene stromu) \n");
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	printf("Pokus o opetovne vlozeni prvku 8 (nesmi dojit ke zmene stromu)\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	Content=8;
 	test_BTInsert(&TempTree, Content);
 	Print_tree(TempTree);
 
 	printf("[TEST11]\n");
-	printf("Pokus o opetovne vlozeni prvku 12 (nesmi dojit ke zmene stromu) \n");
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	printf("Pokus o opetovne vlozeni prvku 12 (nesmi dojit ke zmene stromu)\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	Content=12;
 	test_BTInsert(&TempTree, Content);
 	Print_tree(TempTree);
 
 	printf("[TEST12]\n");
-	printf("Provedeme pruchod Pre-order, In-order a Post-order \n");
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	printf("Provedeme pruchod Pre-order, In-order a Post-order\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_BTPreorder(TempTree);
 	test_BTInorder(TempTree);
 	test_BTPostorder(TempTree);
@@ -286,8 +286,8 @@ int main(int argc, char *argv[])			{
 	Print_tree(TempTree);
 
 	printf("[TEST14]\n");
-	printf("Provedeme pruchod Pre-order, In-order a Post-order \n");
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	printf("Provedeme pruchod Pre-order, In-order a Post-order\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_BTPreorder(TempTree);
 	test_BTInorder(TempTree);
 	test_BTPostorder(TempTree);
@@ -298,8 +298,8 @@ int main(int argc, char *argv[])			{
 	test_BTDispose(&TempTree);
 
 	printf("[TEST16]\n");
-	printf("Provedeme pruchod Pre-order, In-order a Post-order \n");
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	printf("Provedeme pruchod Pre-order, In-order a Post-order\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_BTPreorder(TempTree);
 	test_BTInorder(TempTree);
 	test_BTPostorder(TempTree);
@@ -372,15 +372,15 @@ int main(int argc, char *argv[])			{
 
 
 	printf("[TEST18]\n");
-	printf("Provedeme pruchod Pre-order, In-order a Post-order \n");
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	printf("Provedeme pruchod Pre-order, In-order a Post-order\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_BTPreorder(TempTree);
 	test_BTInorder(TempTree);
 	test_BTPostorder(TempTree);
 
 	printf("[TEST19]\n");
-	printf("Pokus o opetovne vlozeni prvku 9 (nesmi dojit ke zmene stromu) \n");
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	printf("Pokus o opetovne vlozeni prvku 9 (nesmi dojit ke zmene stromu)\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	Content=9;
 	test_BTInsert(&TempTree, Content);
 	Print_tree(TempTree);
@@ -438,15 +438,15 @@ int main(int argc, char *argv[])			{
 
 
 	printf("[TEST22]\n");
-	printf("Provedeme pruchod Pre-order, In-order a Post-order \n");
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	printf("Provedeme pruchod Pre-order, In-order a Post-order\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_BTPreorder(TempTree);
 	test_BTInorder(TempTree);
 	test_BTPostorder(TempTree);
 
 	printf("[TEST23]\n");
-	printf("Pokus o opetovne vlozeni prvku 5 (nesmi dojit ke zmene stromu) \n");
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	printf("Pokus o opetovne vlozeni prvku 5 (nesmi dojit ke zmene stromu)\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	Content=5;
 	test_BTInsert(&TempTree, Content);
 	Print_tree(TempTree);
@@ -504,22 +504,22 @@ int main(int argc, char *argv[])			{
 
 
 	printf("[TEST26]\n");
-	printf("Provedeme pruchod Pre-order, In-order a Post-order \n");
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	printf("Provedeme pruchod Pre-order, In-order a Post-order\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_BTPreorder(TempTree);
 	test_BTInorder(TempTree);
 	test_BTPostorder(TempTree);
 
 	printf("[TEST27]\n");
-	printf("Pokus o opetovne vlozeni prvku 5 (nesmi dojit ke zmene stromu) \n");
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	printf("Pokus o opetovne vlozeni prvku 5 (nesmi dojit ke zmene stromu)\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	Content=5;
 	test_BTInsert(&TempTree, Content);
 	Print_tree(TempTree);
 
 	printf("[TEST28]\n");
-	printf("Pokus o opetovne vlozeni prvku 10 (nesmi dojit ke zmene stromu) \n");
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+	printf("Pokus o opetovne vlozeni prvku 10 (nesmi dojit ke zmene stromu)\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	Content=10;
 	test_BTInsert(&TempTree, Content);
 	Print_tree(TempTree);

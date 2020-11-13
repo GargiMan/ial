@@ -228,9 +228,11 @@ void BSTDispose (tBSTNodePtr *RootPtr) {
 	
 	if (*RootPtr == NULL) return;
 
+	//delete left and right lists
 	if ((*RootPtr)->LPtr != NULL) BSTDispose(&(*RootPtr)->LPtr);
 	if ((*RootPtr)->RPtr != NULL) BSTDispose(&(*RootPtr)->RPtr);
 
+	//free and set root
 	free(*RootPtr);
 	*RootPtr = NULL;
 	

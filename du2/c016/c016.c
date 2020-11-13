@@ -67,8 +67,10 @@ int hashCode ( tKey key ) {
 
 void htInit ( tHTable* ptrht ) {
 
+	//ptr doesnt exist
 	if (ptrht == NULL) return;
 
+	//init table to NULL
 	for (int i = 0; i < HTSIZE; i++) (*ptrht)[i] = NULL;
 
 	return;
@@ -83,9 +85,11 @@ void htInit ( tHTable* ptrht ) {
 
 tHTItem* htSearch ( tHTable* ptrht, tKey key ) {
 
+	//ptr doesnt exist
 	if (ptrht == NULL) return NULL;
 	tHTItem* ptr = (*ptrht)[hashCode(key)];
 
+	//search for key in ptr
 	while (ptr != NULL) {
 		if (strcmp(ptr->key, key) == 0) return ptr;
 		ptr = ptr->ptrnext;
@@ -108,15 +112,19 @@ tHTItem* htSearch ( tHTable* ptrht, tKey key ) {
 
 void htInsert ( tHTable* ptrht, tKey key, tData data ) {
 
+	//ptr doesnt exist
 	if (ptrht == NULL) return;
 
+	//search
 	tHTItem* ptr = htSearch(ptrht,key);
 
+	//found, set new data
 	if (ptr) {
 		ptr->data = data;
 		return;
 	} 
 
+	//not found, allocate new
 	ptr = malloc(sizeof(tHTItem));
 	if (ptr == NULL) return;
 
@@ -139,10 +147,13 @@ void htInsert ( tHTable* ptrht, tKey key, tData data ) {
 
 tData* htRead ( tHTable* ptrht, tKey key ) {
 
+	//ptr doesnt exist
 	if (ptrht == NULL) return NULL;
 
+	//search
 	tHTItem* ptr = htSearch(ptrht,key);
 
+	//return data adr or null
 	return (ptr ? &ptr->data : NULL);
 }
 
@@ -158,11 +169,13 @@ tData* htRead ( tHTable* ptrht, tKey key ) {
 
 void htDelete ( tHTable* ptrht, tKey key ) {
 
+	//ptr doesnt exist
 	if (ptrht == NULL) return;
 
 	tHTItem* ptr = (*ptrht)[hashCode(key)];
 	tHTItem* ptrprev = NULL;
 
+	//search for key at index
 	while (ptr != NULL) {
 
 		if (strcmp(ptr->key, key) == 0) {
@@ -189,10 +202,13 @@ void htDelete ( tHTable* ptrht, tKey key ) {
 
 void htClearAll ( tHTable* ptrht ) {
 
+	//ptr doesnt exist
 	if (ptrht == NULL) return;
 
+	//clear table array
 	for (int i = 0; i < HTSIZE; i++) {
 
+		//clear single index
 		while ((*ptrht)[i] != NULL) {
 			tHTItem* ptr = (*ptrht)[i]->ptrnext;
 			free((*ptrht)[i]);

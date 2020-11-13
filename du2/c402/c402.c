@@ -205,18 +205,22 @@ void BTInsert (tBTNodePtr *RootPtr, int Content) {
 
 	tBTNodePtr temp = *RootPtr;
 
-	//node doesnt exist
+	//move in tree
 	while (temp != NULL) {
 		
+		//content exist already
 		if (Content == temp->Cont) return;
 
+		//move left
 		if (Content < temp->Cont) {
 			
+			//nowhere to move
 			if (temp->LPtr != NULL) {
 				temp = temp->LPtr;
 				continue;
 			}
 
+			//allocate new
 			tBTNodePtr temp_new = malloc(sizeof(struct tBTNode));
 			if(temp_new == NULL) return;
 			
@@ -227,13 +231,16 @@ void BTInsert (tBTNodePtr *RootPtr, int Content) {
 
 			return;
 
+		//move right
 		} else {
 
+			//nowhere to move
 			if (temp->RPtr != NULL) {
 				temp = temp->RPtr;
 				continue;
 			}
 
+			//allocate new
 			tBTNodePtr temp_new = malloc(sizeof(struct tBTNode));
 			if(temp_new == NULL) return;
 
@@ -246,6 +253,7 @@ void BTInsert (tBTNodePtr *RootPtr, int Content) {
 		}
 	}
 
+	//allocate new if root is null
 	tBTNodePtr temp_new = malloc(sizeof(struct tBTNode));
 	if(temp_new == NULL) return;
 	
@@ -271,11 +279,10 @@ void Leftmost_Preorder (tBTNodePtr ptr, tStackP *Stack)	{
 	if (ptr == NULL) return;
 
 	//leftmost preorder
-	tBTNodePtr temp = ptr;
-	while (temp != NULL) {
-		BTWorkOut(temp);
-		SPushP(Stack, temp);
-		temp = temp->LPtr;
+	while (ptr != NULL) {
+		BTWorkOut(ptr);
+		SPushP(Stack, ptr);
+		ptr = ptr->LPtr;
 	}
 
 	return;
@@ -291,10 +298,12 @@ void BTPreorder (tBTNodePtr RootPtr)	{
 	//node doesnt exist
 	if (RootPtr == NULL) return;
 
+	//pointer stack
 	tStackP* temp_stack = malloc(sizeof(tStackP));
 	if (temp_stack == NULL) return;
 	SInitP(temp_stack);
 
+	//preorder
 	Leftmost_Preorder(RootPtr, temp_stack);
 
 	while (!SEmptyP(temp_stack)) {
@@ -302,6 +311,7 @@ void BTPreorder (tBTNodePtr RootPtr)	{
 		Leftmost_Preorder(RootPtr->RPtr, temp_stack);
 	}
 
+	//free stack
 	free(temp_stack);
 
 	return;
@@ -322,10 +332,9 @@ void Leftmost_Inorder(tBTNodePtr ptr, tStackP *Stack)		{
 	if (ptr == NULL) return;
 
 	//leftmost inorder
-	tBTNodePtr temp = ptr;
-	while (temp != NULL) {
-		SPushP(Stack, temp);
-		temp = temp->LPtr;
+	while (ptr != NULL) {
+		SPushP(Stack, ptr);
+		ptr = ptr->LPtr;
 	}
 
 	return;
@@ -341,17 +350,22 @@ void BTInorder (tBTNodePtr RootPtr)	{
 	//node doesnt exist
 	if (RootPtr == NULL) return;
 
+	//pointer stack
 	tStackP* temp_stack = malloc(sizeof(tStackP));
 	if (temp_stack == NULL) return;
 	SInitP(temp_stack);
 
+	//inorder
 	Leftmost_Inorder(RootPtr, temp_stack);
 
 	while (!SEmptyP(temp_stack)) {
+
 		RootPtr = STopPopP(temp_stack);
+		BTWorkOut(RootPtr);
 		Leftmost_Inorder(RootPtr->RPtr, temp_stack);
 	}
 
+	//free stack
 	free(temp_stack);
 
 	return;
@@ -372,11 +386,10 @@ void Leftmost_Postorder (tBTNodePtr ptr, tStackP *StackP, tStackB *StackB) {
 	if (ptr == NULL) return;
 
 	//leftmost postorder
-	tBTNodePtr temp = ptr;
-	while (temp != NULL) {
-		SPushP(StackP, temp);
-		SPushB(StackB,true);
-		temp = temp->LPtr;
+	while (ptr != NULL) {
+		SPushP(StackP, ptr);
+		SPushB(StackB, true);
+		ptr = ptr->LPtr;
 	}
 	
 	return;
@@ -389,7 +402,42 @@ void BTPostorder (tBTNodePtr RootPtr)	{
 ** Zpracování jednoho uzlu stromu realizujte jako volání funkce BTWorkOut().
 **/
 
-	 solved = FALSE;		  /* V případě řešení smažte tento řádek! */
+	//node doesnt exist
+	if (RootPtr == NULL) return;
+
+	//pointer stack
+	tStackP* temp_stack_p = malloc(sizeof(tStackP));
+	if (temp_stack_p == NULL) return;
+	SInitP(temp_stack_p);
+
+	//binary stack
+	tStackB* temp_stack_b = malloc(sizeof(tStackP));
+	if (temp_stack_b == NULL) return;
+	SInitB(temp_stack_b);
+
+	//postorder
+	Leftmost_Postorder(RootPtr, temp_stack_p, temp_stack_b);
+	bool left;
+
+	while (!SEmptyP(temp_stack_p)) {
+
+		RootPtr = STopPopP(temp_stack_p);
+		left = STopPopB(temp_stack_b);
+
+		if (left) {
+			SPushB(temp_stack_b, false);
+			SPushP(temp_stack_p, RootPtr);
+			Leftmost_Postorder(RootPtr->RPtr, temp_stack_p, temp_stack_b);
+		} else {
+			BTWorkOut(RootPtr);
+		}
+	}
+
+	//free stacks
+	free(temp_stack_p);
+	free(temp_stack_b);
+
+	return;
 }
 
 
@@ -403,12 +451,14 @@ void BTDisposeTree (tBTNodePtr *RootPtr)	{
 	//node doesnt exist
 	if (*RootPtr == NULL) return;
 
+	//pointer stack
 	tStackP* temp_stack = malloc(sizeof(tStackP));
 	if (temp_stack == NULL) return;
 	SInitP(temp_stack);
 
 	tBTNodePtr temp_ptr = *RootPtr;
 
+	//move through tree
 	while (temp_ptr != NULL || !SEmptyP(temp_stack)) {
 
 		if (temp_ptr == NULL) temp_ptr = STopPopP(temp_stack);
@@ -419,6 +469,7 @@ void BTDisposeTree (tBTNodePtr *RootPtr)	{
 		free(temp_free);
 	}
 
+	//free stack and set root
 	*RootPtr = NULL;
 	free(temp_stack);
 
